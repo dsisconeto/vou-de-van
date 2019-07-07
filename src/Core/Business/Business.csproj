@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>VouDeVan.Core.Business</RootNamespace>
+    <AssemblyName>VouDeVan.Core.Business</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Business.Support\Business.Support.csproj" />
+  </ItemGroup>
+
+</Project>
