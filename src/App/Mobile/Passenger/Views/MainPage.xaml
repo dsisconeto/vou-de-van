@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  mc:Ignorable="d"
+                  xmlns:views="clr-namespace:VouDeVan.App.Mobile.Passanger.Views;assembly=VouDeVan.App.Mobile.Passanger"
+                  xmlns:home="clr-namespace:VouDeVan.App.Mobile.Passanger.Views.Home;assembly=VouDeVan.App.Mobile.Passanger"
+                  xmlns:lines="clr-namespace:VouDeVan.App.Mobile.Passanger.Views.Lines;assembly=VouDeVan.App.Mobile.Passanger"
+                  x:Class="VouDeVan.App.Mobile.Passanger.Views.MainPage" Title="VouDeVan">
+
+    <MasterDetailPage.Master>
+        <!--<views:MenuPage />-->
+        <ContentPage Title="Default" Padding="10">
+            <StackLayout>
+                <Button Text="Home" Command="{Binding MenuSelectedCommand}"  CommandParameter="NavigationPage\MainPage"/>
+                <Button Text="Event Schedule" Command="{Binding MenuSelectedCommand}" CommandParameter="NavigationPage\EventPage"/>
+                <Button Text="Floor Plan" Command="{Binding MenuSelectedCommand}" CommandParameter="NavigationPage\FloorPlanPage"/>
+                <Button Text="Sponsor/Media Partners" Command="{Binding MenuSelectedCommand}" CommandParameter="NavigationPage\SponsorsPage"/>
+                <Button Text="Where To Eat" Command="{Binding MenuSelectedCommand}" CommandParameter="NavigationPage\FoodNearbyPage"/>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <home:HomePage></home:HomePage>
+        <!--<lines:LinesPage></lines:LinesPage>-->
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

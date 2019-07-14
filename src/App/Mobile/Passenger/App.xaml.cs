@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using VouDeVan.App.Mobile.Passanger.Views;
+using Xamarin.Forms;
+using Plugin.Iconize;
 
 namespace VouDeVan.App.Mobile.Passanger
 {
@@ -7,6 +9,18 @@ namespace VouDeVan.App.Mobile.Passanger
         public App()
         {
             InitializeComponent();
+
+#if DEBUG
+            HotReloader.Current.Run(this);
+#endif
+
+            Iconize.With(new Plugin.Iconize.Fonts.FontAwesomeRegularModule())
+                                  .With(new Plugin.Iconize.Fonts.FontAwesomeBrandsModule())
+                                  .With(new Plugin.Iconize.Fonts.FontAwesomeSolidModule())
+                                  .With(new Plugin.Iconize.Fonts.FontAwesomeSolidModule())
+                                  .With(new Plugin.Iconize.Fonts.MaterialModule());
+
+            MainPage = new IconNavigationPage(new MainPage());
         }
 
         protected override void OnStart()

@@ -22,6 +22,10 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            // Plugin de Ícones 'Iconize'
+            Plugin.Iconize.Iconize.Init(Resource.Id.toolbar, Resource.Id.sliding_tabs);
+
             LoadApplication(new Passanger.App());
         }
 
