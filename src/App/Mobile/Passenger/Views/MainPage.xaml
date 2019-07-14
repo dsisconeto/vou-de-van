@@ -10,16 +10,7 @@
                   x:Class="VouDeVan.App.Mobile.Passanger.Views.MainPage" Title="VouDeVan">
 
     <MasterDetailPage.Master>
-        <!--<views:MenuPage />-->
-        <ContentPage Title="Default" Padding="10">
-            <StackLayout>
-                <Button Text="Home" Command="{Binding MenuSelectedCommand}"  CommandParameter="NavigationPage\MainPage"/>
-                <Button Text="Event Schedule" Command="{Binding MenuSelectedCommand}" CommandParameter="NavigationPage\EventPage"/>
-                <Button Text="Floor Plan" Command="{Binding MenuSelectedCommand}" CommandParameter="NavigationPage\FloorPlanPage"/>
-                <Button Text="Sponsor/Media Partners" Command="{Binding MenuSelectedCommand}" CommandParameter="NavigationPage\SponsorsPage"/>
-                <Button Text="Where To Eat" Command="{Binding MenuSelectedCommand}" CommandParameter="NavigationPage\FoodNearbyPage"/>
-            </StackLayout>
-        </ContentPage>
+        <views:MenuPage />
     </MasterDetailPage.Master>
 
     <MasterDetailPage.Detail>

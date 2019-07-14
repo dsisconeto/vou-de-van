@@ -4,7 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="VouDeVan.App.Mobile.Passanger.Views.Lines.LinesPage">
+             x:Class="VouDeVan.App.Mobile.Passanger.Views.Lines.LinesPage" Title="Linhas">
+    <!--<NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Bla"></Label>
+        </StackLayout>
+    </NavigationPage.TitleView>-->
+
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"

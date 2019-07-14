@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using ImageCircle.Forms.Plugin.Droid;
 
 
 namespace VouDeVan.App.Mobile.Passenger.Droid
@@ -25,6 +26,9 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 
             // Plugin de Ícones 'Iconize'
             Plugin.Iconize.Iconize.Init(Resource.Id.toolbar, Resource.Id.sliding_tabs);
+
+            // Plugin de Imagens Circulares 'Image Circle'
+            ImageCircleRenderer.Init();
 
             LoadApplication(new Passanger.App());
         }

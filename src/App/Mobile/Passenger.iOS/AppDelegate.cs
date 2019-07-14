@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
 
 namespace VouDeVan.App.Mobile.Passenger.iOS
@@ -24,6 +25,9 @@ namespace VouDeVan.App.Mobile.Passenger.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new Passanger.App());
+
+            // Plugin de Imagens Circulares 'Image Circle'
+            ImageCircleRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

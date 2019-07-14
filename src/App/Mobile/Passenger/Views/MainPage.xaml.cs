@@ -15,6 +15,7 @@ namespace VouDeVan.App.Mobile.Passanger.Views
     public partial class MainPage : MasterDetailPage
     {
         Dictionary<int, NavigationPage> _menuPages = new Dictionary<int, NavigationPage>();
+
         public MainPage()
         {
             InitializeComponent();

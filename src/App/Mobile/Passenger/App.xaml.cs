@@ -20,7 +20,7 @@ namespace VouDeVan.App.Mobile.Passanger
                                   .With(new Plugin.Iconize.Fonts.FontAwesomeSolidModule())
                                   .With(new Plugin.Iconize.Fonts.MaterialModule());
 
-            MainPage = new IconNavigationPage(new MainPage());
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

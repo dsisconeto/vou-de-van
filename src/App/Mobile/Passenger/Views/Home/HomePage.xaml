@@ -5,12 +5,25 @@
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                         xmlns:iconize="clr-namespace:Plugin.Iconize;assembly=Plugin.Iconize"
                         xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+                        xmlns:lines="clr-namespace:VouDeVan.App.Mobile.Passanger.Views.Lines;assembly=VouDeVan.App.Mobile.Passanger"
                         android:TabbedPage.ToolbarPlacement="Bottom"
                         mc:Ignorable="d"
                         x:Class="VouDeVan.App.Mobile.Passanger.Views.Home.HomePage" Title="VouDeVan">
 
-    <ContentPage Icon="far-search" Title="Buscar" />
-    <ContentPage Icon="fas-map-marker-alt" Title="Rotas" />
-    <ContentPage Icon="fas-bus" Title="Linhas" />
+    <NavigationPage Icon="far-search" Title="Buscar">
+        <x:Arguments>
+            <lines:LinesPage></lines:LinesPage>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Icon="fas-map-marker-alt" Title="Rotas" >
+        <x:Arguments>
+            <lines:LinesPage></lines:LinesPage>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Icon="far-user" Title="Linhas">
+        <x:Arguments>
+            <lines:LinesPage></lines:LinesPage>
+        </x:Arguments>
+    </NavigationPage>
 
 </iconize:IconTabbedPage>
