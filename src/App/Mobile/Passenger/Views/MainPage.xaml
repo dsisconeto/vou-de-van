@@ -5,17 +5,16 @@
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   mc:Ignorable="d"
                   xmlns:views="clr-namespace:VouDeVan.App.Mobile.Passanger.Views;assembly=VouDeVan.App.Mobile.Passanger"
-                  xmlns:home="clr-namespace:VouDeVan.App.Mobile.Passanger.Views.Home;assembly=VouDeVan.App.Mobile.Passanger"
-                  xmlns:lines="clr-namespace:VouDeVan.App.Mobile.Passanger.Views.Lines;assembly=VouDeVan.App.Mobile.Passanger"
-                  x:Class="VouDeVan.App.Mobile.Passanger.Views.MainPage" Title="VouDeVan">
+                  x:Class="VouDeVan.App.Mobile.Passanger.Views.MainPage" 
+                  MasterBehavior="Popover"
+                  Title="VouDeVan">
 
     <MasterDetailPage.Master>
         <views:MenuPage />
     </MasterDetailPage.Master>
 
     <MasterDetailPage.Detail>
-        <home:HomePage></home:HomePage>
-        <!--<lines:LinesPage></lines:LinesPage>-->
+        <views:TabbedPage></views:TabbedPage>
     </MasterDetailPage.Detail>
 
 </MasterDetailPage>

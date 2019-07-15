@@ -20,9 +20,7 @@ namespace VouDeVan.App.Mobile.Passanger.Views
         {
             InitializeComponent();
 
-            MasterBehavior = MasterBehavior.Popover;
-
-            //_menuPages.Add((int)MenuItemType.About, (NavigationPage)Detail);
+            //_menuPages.Add((int)MenuItemType.Browse, Detail);
         }
 
         public async Task NavigateFromMenu(int id)

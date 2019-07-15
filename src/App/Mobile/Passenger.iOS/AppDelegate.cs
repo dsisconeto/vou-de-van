@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
+using Lottie.Forms.iOS.Renderers;
 using UIKit;
 
 namespace VouDeVan.App.Mobile.Passenger.iOS
@@ -24,10 +25,17 @@ namespace VouDeVan.App.Mobile.Passenger.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            global::Xamarin.Forms.FormsMaterial.Init();
             LoadApplication(new Passanger.App());
+
+            // Plugin de Ícones 'Iconize'
+            Plugin.Iconize.Iconize.Init();
 
             // Plugin de Imagens Circulares 'Image Circle'
             ImageCircleRenderer.Init();
+
+            // Plugin de Animações 'Lottie'
+            AnimationViewRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

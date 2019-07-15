@@ -3,14 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              mc:Ignorable="d"
-             x:Class="VouDeVan.App.Mobile.Passanger.Views.Lines.LinesPage" Title="Linhas">
+             x:Class="VouDeVan.App.Mobile.Passanger.Views.Routes.RoutesPage" Title="Rotas">
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <lottie:AnimationView 
+                x:Name="DoneAnimation" 
+                Animation="done.json" 
+                Loop="False"
+                IsPlaying="True"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage.Content>
+
 </ContentPage>

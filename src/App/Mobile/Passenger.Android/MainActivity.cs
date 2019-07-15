@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using ImageCircle.Forms.Plugin.Droid;
+using Lottie.Forms.Droid;
 
 
 namespace VouDeVan.App.Mobile.Passenger.Droid
@@ -23,12 +24,16 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
 
             // Plugin de Ícones 'Iconize'
             Plugin.Iconize.Iconize.Init(Resource.Id.toolbar, Resource.Id.sliding_tabs);
 
             // Plugin de Imagens Circulares 'Image Circle'
             ImageCircleRenderer.Init();
+
+            // Plugin de Animações 'Lottie'
+            AnimationViewRenderer.Init();
 
             LoadApplication(new Passanger.App());
         }
