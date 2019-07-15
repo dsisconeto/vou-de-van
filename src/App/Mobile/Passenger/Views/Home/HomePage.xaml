@@ -12,7 +12,8 @@
              Visual= "Material"
              x:Class="VouDeVan.App.Mobile.Passanger.Views.Home.HomePage">
 
-    <NavigationPage.TitleView>
+    <!--TIPS: customizar a NavBar-->
+    <!--<NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Padding="20, 0">
             <iconize:IconLabel
                 FontSize="20"
@@ -21,7 +22,7 @@
                 HorizontalTextAlignment="End" Margin="5, 0" />
             <Label HorizontalTextAlignment="End" TextColor="White" FontFamily="{StaticResource LatoBlack}" FontSize="Medium" Text="Palmas"></Label>
         </StackLayout>
-    </NavigationPage.TitleView>
+    </NavigationPage.TitleView>-->
 
     <StackLayout>
         <custom:PancakeView HorizontalOptions="Fill" VerticalOptions="Start" CornerRadius="0,0,0,40" HeightRequest="150">

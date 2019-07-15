@@ -1,13 +1,9 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 using ImageCircle.Forms.Plugin.Droid;
 using Lottie.Forms.Droid;
-
+using Plugin.Permissions;
 
 namespace VouDeVan.App.Mobile.Passenger.Droid
 {
@@ -26,6 +22,12 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
 
+            // Pacote de permissões
+            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
+
+            // Inicializa plugin do Google Maps
+            Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
+
             // Plugin de Ícones 'Iconize'
             Plugin.Iconize.Iconize.Init(Resource.Id.toolbar, Resource.Id.sliding_tabs);
 
@@ -38,11 +40,9 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
             LoadApplication(new Passanger.App());
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions,
-            [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }

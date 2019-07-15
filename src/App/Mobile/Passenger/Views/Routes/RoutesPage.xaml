@@ -4,19 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              mc:Ignorable="d"
              x:Class="VouDeVan.App.Mobile.Passanger.Views.Routes.RoutesPage" Title="Rotas">
 
     <ContentPage.Content>
-        <StackLayout>
-            <lottie:AnimationView 
-                x:Name="DoneAnimation" 
-                Animation="done.json" 
-                Loop="False"
-                IsPlaying="True"
-                VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand" />
-        </StackLayout>
+        <googleMaps:Map x:Name="Map"
+                        VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+        </googleMaps:Map>
     </ContentPage.Content>
 
 </ContentPage>

@@ -28,6 +28,9 @@ namespace VouDeVan.App.Mobile.Passenger.iOS
             global::Xamarin.Forms.FormsMaterial.Init();
             LoadApplication(new Passanger.App());
 
+            // Inicializa plugin do Google Maps
+            Xamarin.FormsGoogleMaps.Init("AIzaSyBumjFnUe1V-Ci_70HVVabIbzNzRseJRJE");
+
             // Plugin de Ícones 'Iconize'
             Plugin.Iconize.Iconize.Init();
 
