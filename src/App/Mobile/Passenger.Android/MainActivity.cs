@@ -1,14 +1,14 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Views;
 using ImageCircle.Forms.Plugin.Droid;
 using Lottie.Forms.Droid;
 using Plugin.Permissions;
 
 namespace VouDeVan.App.Mobile.Passenger.Droid
 {
-    [Activity(Label = "VouDeVan.App.Mobile.Passenger", Icon = "@mipmap/icon", Theme = "@style/MainTheme",
-        MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "VouDeVan.App.Mobile.Passenger", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -36,6 +36,10 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 
             // Plugin de Animações 'Lottie'
             AnimationViewRenderer.Init();
+
+            //Window.AddFlags(WindowManagerFlags.TranslucentNavigation);
+            //Window.SetBackgroundDrawableResource(Resource.Drawable);
+            //SetStatusBarColor(Android.Graphics.Color.Transparent);
 
             LoadApplication(new Passanger.App());
         }

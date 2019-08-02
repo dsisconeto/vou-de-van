@@ -10,6 +10,7 @@
 
     <ContentPage.Content>
         <googleMaps:Map x:Name="Map"
+                        MyLocationEnabled="True"
                         VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
         </googleMaps:Map>
     </ContentPage.Content>

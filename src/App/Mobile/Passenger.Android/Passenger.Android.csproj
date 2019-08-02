@@ -62,7 +62,7 @@
       <Version>3.5.0.129</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Iconize.FontAwesome">
-      <Version>3.5.0.129</Version>
+      <Version>3.5.0.123</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Iconize.Material">
       <Version>3.5.0.129</Version>
@@ -131,7 +131,6 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
@@ -150,6 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\splash_screen.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

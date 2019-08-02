@@ -8,23 +8,29 @@
                         xmlns:lines="clr-namespace:VouDeVan.App.Mobile.Passanger.Views.Lines;assembly=VouDeVan.App.Mobile.Passanger"
                         xmlns:home="clr-namespace:VouDeVan.App.Mobile.Passanger.Views.Home;assembly=VouDeVan.App.Mobile.Passanger"
                         xmlns:routes="clr-namespace:VouDeVan.App.Mobile.Passanger.Views.Routes;assembly=VouDeVan.App.Mobile.Passanger"
+                        xmlns:companies="clr-namespace:VouDeVan.App.Mobile.Passanger.Views.Companies;assembly=VouDeVan.App.Mobile.Passanger"
                         android:TabbedPage.ToolbarPlacement="Bottom"
                         mc:Ignorable="d"
-                        x:Class="VouDeVan.App.Mobile.Passanger.Views.TabbedPage" Title="VouDeVan">
+                        x:Class="VouDeVan.App.Mobile.Passanger.Views.TabbedPage" Title="VouDeVan" BarBackgroundColor="White">
 
-    <NavigationPage Icon="far-search" Title="Buscar" BarTextColor="Transparent">
-        <x:Arguments>
-            <home:HomePage></home:HomePage>
-        </x:Arguments>
-    </NavigationPage>
-    <NavigationPage Icon="fas-map-marker-alt" Title="Rotas" >
+    <NavigationPage Icon="fas-map-marker-alt" Title="Rotas" BarTextColor="Black">
         <x:Arguments>
             <routes:RoutesPage></routes:RoutesPage>
         </x:Arguments>
+        <NavigationPage.BarBackgroundColor>
+            <OnPlatform x:TypeArguments="Color">
+                <On Platform="Android, iOS" Value="Transparent" />
+            </OnPlatform>
+        </NavigationPage.BarBackgroundColor>
     </NavigationPage>
-    <NavigationPage Icon="far-user" Title="Linhas">
+    <NavigationPage Icon="fas-list" Title="Linhas">
         <x:Arguments>
             <lines:LinesPage></lines:LinesPage>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Icon="fas-bus" Title="Companhias">
+        <x:Arguments>
+            <companies:CompaniesPage></companies:CompaniesPage>
         </x:Arguments>
     </NavigationPage>
 

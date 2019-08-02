@@ -7122,44 +7122,44 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0b0066
-			public const int abc_background_cache_hint_selector_material_dark = 2131427430;
-			
 			// aapt resource value: 0x7f0b0067
-			public const int abc_background_cache_hint_selector_material_light = 2131427431;
+			public const int abc_background_cache_hint_selector_material_dark = 2131427431;
 			
 			// aapt resource value: 0x7f0b0068
-			public const int abc_btn_colored_borderless_text_material = 2131427432;
+			public const int abc_background_cache_hint_selector_material_light = 2131427432;
 			
 			// aapt resource value: 0x7f0b0069
-			public const int abc_btn_colored_text_material = 2131427433;
+			public const int abc_btn_colored_borderless_text_material = 2131427433;
 			
 			// aapt resource value: 0x7f0b006a
-			public const int abc_color_highlight_material = 2131427434;
+			public const int abc_btn_colored_text_material = 2131427434;
 			
 			// aapt resource value: 0x7f0b006b
-			public const int abc_hint_foreground_material_dark = 2131427435;
+			public const int abc_color_highlight_material = 2131427435;
 			
 			// aapt resource value: 0x7f0b006c
-			public const int abc_hint_foreground_material_light = 2131427436;
+			public const int abc_hint_foreground_material_dark = 2131427436;
+			
+			// aapt resource value: 0x7f0b006d
+			public const int abc_hint_foreground_material_light = 2131427437;
 			
 			// aapt resource value: 0x7f0b000c
 			public const int abc_input_method_navigation_guard = 2131427340;
 			
-			// aapt resource value: 0x7f0b006d
-			public const int abc_primary_text_disable_only_material_dark = 2131427437;
-			
 			// aapt resource value: 0x7f0b006e
-			public const int abc_primary_text_disable_only_material_light = 2131427438;
+			public const int abc_primary_text_disable_only_material_dark = 2131427438;
 			
 			// aapt resource value: 0x7f0b006f
-			public const int abc_primary_text_material_dark = 2131427439;
+			public const int abc_primary_text_disable_only_material_light = 2131427439;
 			
 			// aapt resource value: 0x7f0b0070
-			public const int abc_primary_text_material_light = 2131427440;
+			public const int abc_primary_text_material_dark = 2131427440;
 			
 			// aapt resource value: 0x7f0b0071
-			public const int abc_search_url_text = 2131427441;
+			public const int abc_primary_text_material_light = 2131427441;
+			
+			// aapt resource value: 0x7f0b0072
+			public const int abc_search_url_text = 2131427442;
 			
 			// aapt resource value: 0x7f0b000d
 			public const int abc_search_url_text_normal = 2131427341;
@@ -7170,29 +7170,29 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			// aapt resource value: 0x7f0b000f
 			public const int abc_search_url_text_selected = 2131427343;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int abc_secondary_text_material_dark = 2131427442;
-			
 			// aapt resource value: 0x7f0b0073
-			public const int abc_secondary_text_material_light = 2131427443;
+			public const int abc_secondary_text_material_dark = 2131427443;
 			
 			// aapt resource value: 0x7f0b0074
-			public const int abc_tint_btn_checkable = 2131427444;
+			public const int abc_secondary_text_material_light = 2131427444;
 			
 			// aapt resource value: 0x7f0b0075
-			public const int abc_tint_default = 2131427445;
+			public const int abc_tint_btn_checkable = 2131427445;
 			
 			// aapt resource value: 0x7f0b0076
-			public const int abc_tint_edittext = 2131427446;
+			public const int abc_tint_default = 2131427446;
 			
 			// aapt resource value: 0x7f0b0077
-			public const int abc_tint_seek_thumb = 2131427447;
+			public const int abc_tint_edittext = 2131427447;
 			
 			// aapt resource value: 0x7f0b0078
-			public const int abc_tint_spinner = 2131427448;
+			public const int abc_tint_seek_thumb = 2131427448;
 			
 			// aapt resource value: 0x7f0b0079
-			public const int abc_tint_switch_track = 2131427449;
+			public const int abc_tint_spinner = 2131427449;
+			
+			// aapt resource value: 0x7f0b007a
+			public const int abc_tint_switch_track = 2131427450;
 			
 			// aapt resource value: 0x7f0b0010
 			public const int accent_material_dark = 2131427344;
@@ -7269,8 +7269,8 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			// aapt resource value: 0x7f0b0064
 			public const int colorPrimaryDark = 2131427428;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int common_google_signin_btn_text_dark = 2131427450;
+			// aapt resource value: 0x7f0b007b
+			public const int common_google_signin_btn_text_dark = 2131427451;
 			
 			// aapt resource value: 0x7f0b0000
 			public const int common_google_signin_btn_text_dark_default = 2131427328;
@@ -7284,8 +7284,8 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			// aapt resource value: 0x7f0b0003
 			public const int common_google_signin_btn_text_dark_pressed = 2131427331;
 			
-			// aapt resource value: 0x7f0b007b
-			public const int common_google_signin_btn_text_light = 2131427451;
+			// aapt resource value: 0x7f0b007c
+			public const int common_google_signin_btn_text_light = 2131427452;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int common_google_signin_btn_text_light_default = 2131427332;
@@ -7299,8 +7299,8 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			// aapt resource value: 0x7f0b0007
 			public const int common_google_signin_btn_text_light_pressed = 2131427335;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int common_google_signin_btn_tint = 2131427452;
+			// aapt resource value: 0x7f0b007d
+			public const int common_google_signin_btn_tint = 2131427453;
 			
 			// aapt resource value: 0x7f0b0049
 			public const int design_bottom_navigation_shadow_color = 2131427401;
@@ -7311,8 +7311,8 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			// aapt resource value: 0x7f0b004b
 			public const int design_default_color_primary_dark = 2131427403;
 			
-			// aapt resource value: 0x7f0b007d
-			public const int design_error = 2131427453;
+			// aapt resource value: 0x7f0b007e
+			public const int design_error = 2131427454;
 			
 			// aapt resource value: 0x7f0b004c
 			public const int design_fab_shadow_end_color = 2131427404;
@@ -7338,8 +7338,8 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			// aapt resource value: 0x7f0b0053
 			public const int design_snackbar_background_color = 2131427411;
 			
-			// aapt resource value: 0x7f0b007e
-			public const int design_tint_password_toggle = 2131427454;
+			// aapt resource value: 0x7f0b007f
+			public const int design_tint_password_toggle = 2131427455;
 			
 			// aapt resource value: 0x7f0b001e
 			public const int dim_foreground_disabled_material_dark = 2131427358;
@@ -7410,71 +7410,71 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			// aapt resource value: 0x7f0b0033
 			public const int material_grey_900 = 2131427379;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int mtrl_bottom_nav_colored_item_tint = 2131427455;
-			
 			// aapt resource value: 0x7f0b0080
-			public const int mtrl_bottom_nav_item_tint = 2131427456;
+			public const int mtrl_bottom_nav_colored_item_tint = 2131427456;
+			
+			// aapt resource value: 0x7f0b0081
+			public const int mtrl_bottom_nav_item_tint = 2131427457;
 			
 			// aapt resource value: 0x7f0b0054
 			public const int mtrl_btn_bg_color_disabled = 2131427412;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int mtrl_btn_bg_color_selector = 2131427457;
-			
 			// aapt resource value: 0x7f0b0082
-			public const int mtrl_btn_ripple_color = 2131427458;
+			public const int mtrl_btn_bg_color_selector = 2131427458;
 			
 			// aapt resource value: 0x7f0b0083
-			public const int mtrl_btn_stroke_color_selector = 2131427459;
+			public const int mtrl_btn_ripple_color = 2131427459;
 			
 			// aapt resource value: 0x7f0b0084
-			public const int mtrl_btn_text_btn_ripple_color = 2131427460;
+			public const int mtrl_btn_stroke_color_selector = 2131427460;
+			
+			// aapt resource value: 0x7f0b0085
+			public const int mtrl_btn_text_btn_ripple_color = 2131427461;
 			
 			// aapt resource value: 0x7f0b0055
 			public const int mtrl_btn_text_color_disabled = 2131427413;
 			
-			// aapt resource value: 0x7f0b0085
-			public const int mtrl_btn_text_color_selector = 2131427461;
+			// aapt resource value: 0x7f0b0086
+			public const int mtrl_btn_text_color_selector = 2131427462;
 			
 			// aapt resource value: 0x7f0b0056
 			public const int mtrl_btn_transparent_bg_color = 2131427414;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int mtrl_chip_background_color = 2131427462;
-			
 			// aapt resource value: 0x7f0b0087
-			public const int mtrl_chip_close_icon_tint = 2131427463;
+			public const int mtrl_chip_background_color = 2131427463;
 			
 			// aapt resource value: 0x7f0b0088
-			public const int mtrl_chip_ripple_color = 2131427464;
+			public const int mtrl_chip_close_icon_tint = 2131427464;
 			
 			// aapt resource value: 0x7f0b0089
-			public const int mtrl_chip_text_color = 2131427465;
+			public const int mtrl_chip_ripple_color = 2131427465;
 			
 			// aapt resource value: 0x7f0b008a
-			public const int mtrl_fab_ripple_color = 2131427466;
+			public const int mtrl_chip_text_color = 2131427466;
+			
+			// aapt resource value: 0x7f0b008b
+			public const int mtrl_fab_ripple_color = 2131427467;
 			
 			// aapt resource value: 0x7f0b0057
 			public const int mtrl_scrim_color = 2131427415;
 			
-			// aapt resource value: 0x7f0b008b
-			public const int mtrl_tabs_colored_ripple_color = 2131427467;
-			
 			// aapt resource value: 0x7f0b008c
-			public const int mtrl_tabs_icon_color_selector = 2131427468;
+			public const int mtrl_tabs_colored_ripple_color = 2131427468;
 			
 			// aapt resource value: 0x7f0b008d
-			public const int mtrl_tabs_icon_color_selector_colored = 2131427469;
+			public const int mtrl_tabs_icon_color_selector = 2131427469;
 			
 			// aapt resource value: 0x7f0b008e
-			public const int mtrl_tabs_legacy_text_color_selector = 2131427470;
+			public const int mtrl_tabs_icon_color_selector_colored = 2131427470;
 			
 			// aapt resource value: 0x7f0b008f
-			public const int mtrl_tabs_ripple_color = 2131427471;
+			public const int mtrl_tabs_legacy_text_color_selector = 2131427471;
 			
 			// aapt resource value: 0x7f0b0090
-			public const int mtrl_text_btn_text_color_selector = 2131427472;
+			public const int mtrl_tabs_ripple_color = 2131427472;
+			
+			// aapt resource value: 0x7f0b0091
+			public const int mtrl_text_btn_text_color_selector = 2131427473;
 			
 			// aapt resource value: 0x7f0b0058
 			public const int mtrl_textinput_default_box_stroke_color = 2131427416;
@@ -7539,17 +7539,20 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			// aapt resource value: 0x7f0b0041
 			public const int secondary_text_disabled_material_light = 2131427393;
 			
+			// aapt resource value: 0x7f0b0066
+			public const int splash_background = 2131427430;
+			
 			// aapt resource value: 0x7f0b0042
 			public const int switch_thumb_disabled_material_dark = 2131427394;
 			
 			// aapt resource value: 0x7f0b0043
 			public const int switch_thumb_disabled_material_light = 2131427395;
 			
-			// aapt resource value: 0x7f0b0091
-			public const int switch_thumb_material_dark = 2131427473;
-			
 			// aapt resource value: 0x7f0b0092
-			public const int switch_thumb_material_light = 2131427474;
+			public const int switch_thumb_material_dark = 2131427474;
+			
+			// aapt resource value: 0x7f0b0093
+			public const int switch_thumb_material_light = 2131427475;
 			
 			// aapt resource value: 0x7f0b0044
 			public const int switch_thumb_normal_material_dark = 2131427396;
@@ -7563,8 +7566,8 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			// aapt resource value: 0x7f0b0047
 			public const int tooltip_background_light = 2131427399;
 			
-			// aapt resource value: 0x7f0b0093
-			public const int white_disabled_material = 2131427475;
+			// aapt resource value: 0x7f0b0094
+			public const int white_disabled_material = 2131427476;
 			
 			static Color()
 			{
@@ -8531,26 +8534,26 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			// aapt resource value: 0x7f020055
 			public const int avd_hide_password = 2130837589;
 			
-			// aapt resource value: 0x7f02014f
-			public const int avd_hide_password_1 = 2130837839;
-			
 			// aapt resource value: 0x7f020150
-			public const int avd_hide_password_2 = 2130837840;
+			public const int avd_hide_password_1 = 2130837840;
 			
 			// aapt resource value: 0x7f020151
-			public const int avd_hide_password_3 = 2130837841;
+			public const int avd_hide_password_2 = 2130837841;
+			
+			// aapt resource value: 0x7f020152
+			public const int avd_hide_password_3 = 2130837842;
 			
 			// aapt resource value: 0x7f020056
 			public const int avd_show_password = 2130837590;
 			
-			// aapt resource value: 0x7f020152
-			public const int avd_show_password_1 = 2130837842;
-			
 			// aapt resource value: 0x7f020153
-			public const int avd_show_password_2 = 2130837843;
+			public const int avd_show_password_1 = 2130837843;
 			
 			// aapt resource value: 0x7f020154
-			public const int avd_show_password_3 = 2130837844;
+			public const int avd_show_password_2 = 2130837844;
+			
+			// aapt resource value: 0x7f020155
+			public const int avd_show_password_3 = 2130837845;
 			
 			// aapt resource value: 0x7f020057
 			public const int common_full_open_on_phone = 2130837591;
@@ -9174,127 +9177,130 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			public const int ic_vol_type_tv_light = 2130837797;
 			
 			// aapt resource value: 0x7f020126
-			public const int map = 2130837798;
+			public const int logo = 2130837798;
 			
 			// aapt resource value: 0x7f020127
-			public const int MaterialActivityIndicatorBackground = 2130837799;
+			public const int map = 2130837799;
 			
 			// aapt resource value: 0x7f020128
-			public const int MaterialProgressBar = 2130837800;
+			public const int MaterialActivityIndicatorBackground = 2130837800;
 			
 			// aapt resource value: 0x7f020129
-			public const int mr_button_connected_dark = 2130837801;
+			public const int MaterialProgressBar = 2130837801;
 			
 			// aapt resource value: 0x7f02012a
-			public const int mr_button_connected_light = 2130837802;
+			public const int mr_button_connected_dark = 2130837802;
 			
 			// aapt resource value: 0x7f02012b
-			public const int mr_button_connecting_dark = 2130837803;
+			public const int mr_button_connected_light = 2130837803;
 			
 			// aapt resource value: 0x7f02012c
-			public const int mr_button_connecting_light = 2130837804;
+			public const int mr_button_connecting_dark = 2130837804;
 			
 			// aapt resource value: 0x7f02012d
-			public const int mr_button_dark = 2130837805;
+			public const int mr_button_connecting_light = 2130837805;
 			
 			// aapt resource value: 0x7f02012e
-			public const int mr_button_light = 2130837806;
+			public const int mr_button_dark = 2130837806;
 			
 			// aapt resource value: 0x7f02012f
-			public const int mr_dialog_close_dark = 2130837807;
+			public const int mr_button_light = 2130837807;
 			
 			// aapt resource value: 0x7f020130
-			public const int mr_dialog_close_light = 2130837808;
+			public const int mr_dialog_close_dark = 2130837808;
 			
 			// aapt resource value: 0x7f020131
-			public const int mr_dialog_material_background_dark = 2130837809;
+			public const int mr_dialog_close_light = 2130837809;
 			
 			// aapt resource value: 0x7f020132
-			public const int mr_dialog_material_background_light = 2130837810;
+			public const int mr_dialog_material_background_dark = 2130837810;
 			
 			// aapt resource value: 0x7f020133
-			public const int mr_group_collapse = 2130837811;
+			public const int mr_dialog_material_background_light = 2130837811;
 			
 			// aapt resource value: 0x7f020134
-			public const int mr_group_expand = 2130837812;
+			public const int mr_group_collapse = 2130837812;
 			
 			// aapt resource value: 0x7f020135
-			public const int mr_media_pause_dark = 2130837813;
+			public const int mr_group_expand = 2130837813;
 			
 			// aapt resource value: 0x7f020136
-			public const int mr_media_pause_light = 2130837814;
+			public const int mr_media_pause_dark = 2130837814;
 			
 			// aapt resource value: 0x7f020137
-			public const int mr_media_play_dark = 2130837815;
+			public const int mr_media_pause_light = 2130837815;
 			
 			// aapt resource value: 0x7f020138
-			public const int mr_media_play_light = 2130837816;
+			public const int mr_media_play_dark = 2130837816;
 			
 			// aapt resource value: 0x7f020139
-			public const int mr_media_stop_dark = 2130837817;
+			public const int mr_media_play_light = 2130837817;
 			
 			// aapt resource value: 0x7f02013a
-			public const int mr_media_stop_light = 2130837818;
+			public const int mr_media_stop_dark = 2130837818;
 			
 			// aapt resource value: 0x7f02013b
-			public const int mr_vol_type_audiotrack_dark = 2130837819;
+			public const int mr_media_stop_light = 2130837819;
 			
 			// aapt resource value: 0x7f02013c
-			public const int mr_vol_type_audiotrack_light = 2130837820;
+			public const int mr_vol_type_audiotrack_dark = 2130837820;
 			
 			// aapt resource value: 0x7f02013d
-			public const int mtrl_snackbar_background = 2130837821;
+			public const int mr_vol_type_audiotrack_light = 2130837821;
 			
 			// aapt resource value: 0x7f02013e
-			public const int mtrl_tabs_default_indicator = 2130837822;
+			public const int mtrl_snackbar_background = 2130837822;
 			
 			// aapt resource value: 0x7f02013f
-			public const int navigation_empty_icon = 2130837823;
+			public const int mtrl_tabs_default_indicator = 2130837823;
 			
 			// aapt resource value: 0x7f020140
-			public const int notification_action_background = 2130837824;
+			public const int navigation_empty_icon = 2130837824;
 			
 			// aapt resource value: 0x7f020141
-			public const int notification_bg = 2130837825;
+			public const int notification_action_background = 2130837825;
 			
 			// aapt resource value: 0x7f020142
-			public const int notification_bg_low = 2130837826;
+			public const int notification_bg = 2130837826;
 			
 			// aapt resource value: 0x7f020143
-			public const int notification_bg_low_normal = 2130837827;
+			public const int notification_bg_low = 2130837827;
 			
 			// aapt resource value: 0x7f020144
-			public const int notification_bg_low_pressed = 2130837828;
+			public const int notification_bg_low_normal = 2130837828;
 			
 			// aapt resource value: 0x7f020145
-			public const int notification_bg_normal = 2130837829;
+			public const int notification_bg_low_pressed = 2130837829;
 			
 			// aapt resource value: 0x7f020146
-			public const int notification_bg_normal_pressed = 2130837830;
+			public const int notification_bg_normal = 2130837830;
 			
 			// aapt resource value: 0x7f020147
-			public const int notification_icon_background = 2130837831;
-			
-			// aapt resource value: 0x7f02014d
-			public const int notification_template_icon_bg = 2130837837;
-			
-			// aapt resource value: 0x7f02014e
-			public const int notification_template_icon_low_bg = 2130837838;
+			public const int notification_bg_normal_pressed = 2130837831;
 			
 			// aapt resource value: 0x7f020148
-			public const int notification_tile_bg = 2130837832;
+			public const int notification_icon_background = 2130837832;
+			
+			// aapt resource value: 0x7f02014e
+			public const int notification_template_icon_bg = 2130837838;
+			
+			// aapt resource value: 0x7f02014f
+			public const int notification_template_icon_low_bg = 2130837839;
 			
 			// aapt resource value: 0x7f020149
-			public const int notify_panel_notification_icon_bg = 2130837833;
+			public const int notification_tile_bg = 2130837833;
 			
 			// aapt resource value: 0x7f02014a
-			public const int tooltip_frame_dark = 2130837834;
+			public const int notify_panel_notification_icon_bg = 2130837834;
 			
 			// aapt resource value: 0x7f02014b
-			public const int tooltip_frame_light = 2130837835;
+			public const int splash_screen = 2130837835;
 			
 			// aapt resource value: 0x7f02014c
-			public const int xamarin_logo = 2130837836;
+			public const int tooltip_frame_dark = 2130837836;
+			
+			// aapt resource value: 0x7f02014d
+			public const int tooltip_frame_light = 2130837837;
 			
 			static Drawable()
 			{
@@ -11945,6 +11951,9 @@ namespace VouDeVan.App.Mobile.Passenger.Droid
 			
 			// aapt resource value: 0x7f0c000d
 			public const int Theme_MediaRouter_LightControlPanel = 2131492877;
+			
+			// aapt resource value: 0x7f0c0209
+			public const int Theme_Splash = 2131493385;
 			
 			// aapt resource value: 0x7f0c0119
 			public const int ThemeOverlay_AppCompat = 2131493145;
