@@ -1,4 +1,4 @@
-namespace VouDeVan.App.Web.AdminPainel.Models
+namespace VouDeVan.App.Web.AdminPainel.Models.Common
 {
     public class ErrorViewModel
     {

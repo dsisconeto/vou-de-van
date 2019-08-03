@@ -18,7 +18,7 @@ namespace VouDeVan.Core.Business.Support
 
         public static void Argument(bool expression, string message)
         {
-            if (!expression)
+            if (expression)
             {
                 throw new ArgumentException(message);
             }

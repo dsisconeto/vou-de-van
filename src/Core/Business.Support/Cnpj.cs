@@ -16,13 +16,13 @@
             get => _number;
             private set
             {
-                Guard.IsNullOrWhiteSpace(value);
+                //Guard.IsNullOrWhiteSpace(_number);
                 
-                value = value.Replace(".", "")
-                    .Replace("/", "")
-                    .Replace("-", "");
+                //value = value.Replace(".", "")
+                //    .Replace("/", "")
+                //    .Replace("-", "");
                 
-                Guard.Business(value.Length == 14, "Tamanho do CNPJ deve ser 14 digitos");
+                //Guard.Business(value.Length == 14, "Tamanho do CNPJ deve ser 14 digitos");
 
                 _number = value;
             }

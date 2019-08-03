@@ -12,7 +12,6 @@ namespace VouDeVan.Core.Business.TransportationCompanies
         private Representative _representative;
         private string _observation;
 
-
         public TransportationCompany(Guid id, string fantasyName, string socialName, Cnpj cnpj, string address,
             Representative representative, string observation, Status status)
         {
@@ -33,9 +32,9 @@ namespace VouDeVan.Core.Business.TransportationCompanies
             get => _fantasyName;
             set
             {
-                Guard.IsNullOrWhiteSpace(value);
-                Guard.Argument(value.Length <= 100,
-                    "Tamanho máximo do Nome Fantasia é 100 caracteres");
+                //Guard.IsNullOrWhiteSpace(_fantasyName);
+                //Guard.Argument(value.Length <= 100,
+                //    "Tamanho máximo do Nome Fantasia é 100 caracteres");
 
                 _fantasyName = value;
             }
@@ -46,10 +45,10 @@ namespace VouDeVan.Core.Business.TransportationCompanies
             get => _socialName;
             set
             {
-                Guard.IsNullOrWhiteSpace(value);
-                Guard.Argument(
-                    value.Length <= 50,
-                    "Tamanho máximo da Razão Social é 50 caracteres");
+                //Guard.IsNullOrWhiteSpace(_socialName);
+                //Guard.Argument(
+                //    value.Length <= 50,
+                //    "Tamanho máximo da Razão Social é 50 caracteres");
 
                 _socialName = value;
             }
@@ -60,7 +59,7 @@ namespace VouDeVan.Core.Business.TransportationCompanies
             get => _cnpj;
             set
             {
-                Guard.IsNotNull(value);
+                //Guard.IsNotNull(_cnpj);
                 _cnpj = value;
             }
         }
@@ -70,10 +69,10 @@ namespace VouDeVan.Core.Business.TransportationCompanies
             get => _address;
             set
             {
-                Guard.IsNotNull(value);
-                Guard.Argument(
-                    value.Length <= 400,
-                    "Tamanho máximo do endereço é 400 caracteres");
+                //Guard.IsNotNull(_address);
+                //Guard.Argument(
+                //    value.Length <= 400,
+                //    "Tamanho máximo do endereço é 400 caracteres");
                 _address = value;
             }
         }
@@ -83,7 +82,7 @@ namespace VouDeVan.Core.Business.TransportationCompanies
             get => _representative;
             set
             {
-                Guard.IsNotNull(value);
+                //Guard.IsNotNull(_representative);
                 _representative = value;
             }
         }
@@ -93,14 +92,13 @@ namespace VouDeVan.Core.Business.TransportationCompanies
             get => _observation;
             set
             {
-                Guard.Argument(value.Length <= 10000, "Tamanho máximo da observação é 10000 caracteres");
-                Guard.IsNotNull(value);
+                //Guard.Argument(value.Length <= 10000, "Tamanho máximo da observação é 10000 caracteres");
+                //Guard.IsNotNull(_observation);
                 _observation = value;
             }
         }
 
         public Status Status { get; }
-
 
         public bool IsActive => Status == Status.Active;
         public bool IsDisabled => Status == Status.Disabled;

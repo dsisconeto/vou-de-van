@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Companhias de Transporte";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="main-card mb-3 card">
+            <div class="card-header">
+                Companhias de Transporte
+                <div class="btn-actions-pane-right">
+                    <div role="group" class="btn-group-sm btn-group">
+                        <a asp-action="Create" class="btn-shadow btn btn-success"><i class="fas fa-plus"></i>&nbsp;Novo</a>
+                        <button class="btn-shadow btn btn-dark">Atualizar</button>
+                    </div>
+                </div>
+            </div>
+            @Html.AjaxGrid(Url.Action("IndexGrid"))
+        </div>
+    </div>
+</div>

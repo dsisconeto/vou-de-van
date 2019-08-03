@@ -1,0 +1,48 @@
+﻿@model VouDeVan.App.Web.AdminPainel.Models.TransportationCompany.TransportationCompanyViewModel
+
+@{
+    ViewData["Title"] = "Nova Companhia de Transporte";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="main-card mb-3 card">
+            <div class="card-header">
+                Cadastrar
+                <div class="btn-actions-pane-right">
+                    <div role="group" class="btn-group-sm btn-group">
+                        <button class="btn-shadow btn btn-dark">Voltar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Create", "TransportationCompanies", FormMethod.Post))
+                {
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                @Html.LabelFor(transportationCompany => transportationCompany.FantasyName)
+                                @Html.EditorFor(transportationCompany => transportationCompany.FantasyName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome verdadeiro da empresa" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                @Html.LabelFor(transportationCompany => transportationCompany.SocialName)
+                                @Html.EditorFor(transportationCompany => transportationCompany.SocialName, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <div class="position-relative form-group">
+                                @Html.LabelFor(transportationCompany => transportationCompany.Cnpj)
+                                @Html.EditorFor(transportationCompany => transportationCompany.Cnpj, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="mt-2 btn btn-primary">Enviar</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

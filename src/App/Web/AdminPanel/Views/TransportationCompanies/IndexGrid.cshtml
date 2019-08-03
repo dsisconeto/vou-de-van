@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Html
+
+@model IEnumerable<VouDeVan.Core.Business.TransportationCompanies.TransportationCompany>
+
+@{
+    Func<Guid, IHtmlContent> DisplayActions =
+        @<div>
+             <a class="btn btn-primary" href="@Url.Action("Edit", new {item})">
+                 <span>Editar&nbsp;</span>
+                 <i class="fas fa-edit"></i>
+             </a>
+            <a class="btn btn-danger" href="@Url.Action("Delete", new {item})">
+                <span>Excluir&nbsp;</span>
+                <i class="fas fa-trash"></i>
+            </a>
+        </div>
+        ;
+}
+
+@(Html
+      .Grid(Model)
+      .Build(columns =>
+      {
+          columns.Add(transportationCompany => transportationCompany.Id).Titled("#");
+          columns.Add(transportationCompany => transportationCompany.SocialName).Titled("Nome Social");
+          //columns.Add(model => model.MaritalStatus).Titled("Marital status");
+          //columns.Add(model => model.Age).Titled("Age");
+          //columns.Add(model => model.Birthday).Titled("Birthday").Formatted("{0:d}");
+          columns.Add(model => model.Id).Titled("Ações").RenderedAs(model => DisplayActions(model.Id));
+      })
+      .Empty("No data found")
+      .Pageable(pager =>
+      {
+          pager.PagesToDisplay = 2;
+          pager.RowsPerPage = 2;
+      })
+      .Sortable()
+)

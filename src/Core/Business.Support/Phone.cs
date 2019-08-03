@@ -14,9 +14,8 @@
                 .Trim();
 
             Ddd = completeNumber.Substring(0, 2);
-            Ddd = completeNumber.Substring(2, completeNumber.Length);
+            //Number = completeNumber.Substring(3, completeNumber.Length);
         }
-
 
         public Phone(string ddd, string number)
         {
@@ -24,17 +23,15 @@
             Number = number;
         }
 
-
         public string Number
         {
             get => _number;
             private set
             {
-                Guard.IsNullOrWhiteSpace(value);
-                Guard.Argument(
-                    value.Length == 8 || value.Length == 9,
-                    "Número do telefone tem que ter entre 8 e 9 digitos");
-
+                //Guard.IsNullOrWhiteSpace(value);
+                //Guard.Argument(
+                //    value.Length == 8 || value.Length == 9,
+                //    "Número do telefone tem que ter entre 8 e 9 digitos");
 
                 _number = value;
             }
@@ -45,10 +42,10 @@
             get => _ddd;
             private set
             {
-                Guard.IsNullOrWhiteSpace(value);
-                Guard.Argument(
-                    value.Length == 2,
-                    "DDD do telefone tem que ser 2 digitos");
+                //Guard.IsNullOrWhiteSpace(value);
+                //Guard.Argument(
+                //    value.Length == 2,
+                //    "DDD do telefone tem que ser 2 digitos");
 
                 _ddd = value;
             }
