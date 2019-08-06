@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using VouDeVan.App.Web.AdminPainel.Models;
 using VouDeVan.App.Web.AdminPainel.Models.TransportationCompany;
@@ -14,10 +15,13 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
     public class TransportationCompaniesController : BaseController
     {
         private readonly TransportationCompanyServices _transportationCompanyServices;
+        private readonly IMapper _mapper;
 
-        public TransportationCompaniesController(TransportationCompanyServices transportationCompanyServices)
+        public TransportationCompaniesController(TransportationCompanyServices transportationCompanyServices,
+            IMapper mapper)
         {
             _transportationCompanyServices = transportationCompanyServices;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
@@ -35,18 +39,21 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-         
             return View(new TransportationCompanyViewModel());
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromBody] TransportationCompany transportationCompany)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(
+            [FromForm] TransportationCompanyViewModel transportationCompanyViewModel)
         {
             if (ModelState.IsValid == false)
             {
-                return View(transportationCompany);
+                return View(transportationCompanyViewModel);
             }
+
+            var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
+
 
             await _transportationCompanyServices.Create(transportationCompany);
 
@@ -62,8 +69,6 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
             }
 
 
-       
-           
             return View();
         }
 

@@ -11,6 +11,9 @@ namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompany
 {
     public class TransportationCompanyViewModel
     {
+
+        public Guid? Id { get; set; }
+
         [Required] [MaxLength(14)] public string CNPJ { get; set; }
 
         [Required] [MaxLength(50)] public string FantasyName { get; set; }
@@ -27,7 +30,8 @@ namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompany
         [MaxLength(1000)]
         public string Observation { get; set; }
 
-        [Required] [MaxLength(40)] public Status Status { get; set; } = Status.Active;
+        [Required] 
+        public Status Status { get; set; } = Status.Active;
 
 
         public List<SelectListItem> Statuses { get; } = new List<SelectListItem>

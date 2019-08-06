@@ -1,35 +1,44 @@
 ﻿@using Microsoft.AspNetCore.Html
+@using VouDeVan.Core.Business.Domains.TransportationCompanies
+@using VouDeVan.Core.Business.Support
 
-@model VouDeVan.Core.Business.Support.GridResult<VouDeVan.Core.Business.Domains.TransportationCompanies.TransportationCompany>
+@model GridResult<TransportationCompany>
 
-@{
-    Func<Guid, IHtmlContent> DisplayActions =
-        @<div>
-i             <a class="btn btn-primary" asp-action="Edit" asp-route-id="{item}">
-                 <span>Editar&nbsp;</span>
-                 <i class="fas fa-edit"></i>
-             </a>
-            <a class="btn btn-danger" >
-                <span>Excluir&nbsp;</span>
-                <i class="fas fa-trash"></i>
-            </a>
-        </div>
-        ;
-}
 
-@(Html
-      .Grid(Model.Items)
+
+@(Html.Grid(Model.Items)
       .Build(columns =>
       {
-          columns.Add(transportationCompany => transportationCompany.Id).Titled("#");
-          columns.Add(transportationCompany => transportationCompany.SocialName).Titled("Nome Social");
-          columns.Add(model => model.Id).Titled("Ações").RenderedAs(model => DisplayActions(model.Id));
+          columns.Add(transportationCompany => transportationCompany.SocialName)
+              .Titled("Nome Social");
+
+          columns.Add(transportationCompany => transportationCompany.Id)
+              .Titled("Ações")
+              .RenderedAs(transportationCompany => DisplayActions(transportationCompany));
       })
-      .Empty("No data found")
+      .Empty("Ainda Não existe empresas cadastradas")
       .Pageable(pager =>
       {
           pager.RowsPerPage = Model.RowsRowsPerPage;
           pager.TotalRows = Model.Total;
       })
       .Sortable()
-)
+      )
+
+
+@{
+
+    IHtmlContent DisplayActions(TransportationCompany transportationCompany) => 
+        @<div>
+            
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="">
+                <span>Editar&nbsp;</span>
+                <i class="fas fa-edit"></i>
+            </a>
+            <a class="btn btn-danger">
+                <span>Excluir&nbsp;</span>
+                <i class="fas fa-trash"></i>
+            </a>
+        </div>;
+
+}

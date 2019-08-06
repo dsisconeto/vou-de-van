@@ -1,14 +1,14 @@
 ﻿@model VouDeVan.App.Web.AdminPainel.Models.TransportationCompany.TransportationCompanyViewModel
 
 @{
-    ViewData["Title"] = "Nova Companhia de Transporte";
+    ViewData["Title"] = "Nova Empresa de Transporte";
 }
 
 <div class="row">
     <div class="col-md-12">
         <div class="main-card mb-3 card">
             <div class="card-header">
-                Cadastrar
+                Cadastrar Empresa
                 <div class="btn-actions-pane-right">
                     <div role="group" class="btn-group-sm btn-group">
                         <button class="btn-shadow btn btn-dark">Voltar</button>
@@ -16,7 +16,10 @@
                 </div>
             </div>
             <div class="card-body">
-                <form asp-action="Create" method="post">
+
+
+                <form sp-action="Create" method="post" asp-antiforgery="true">
+
                     <div class="form-row">
                         <div class="col-md-5">
                             <div class="position-relative form-group">
@@ -82,13 +85,11 @@
                         </div>
                     </div>
 
-
                     <div class="form-row">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary float-right">Cadastrar</button>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </div>
                     </div>
-
                 </form>
 
             </div>
