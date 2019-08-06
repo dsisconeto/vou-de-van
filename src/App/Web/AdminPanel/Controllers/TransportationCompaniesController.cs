@@ -27,7 +27,7 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
 
         public async Task<PartialViewResult> IndexGrid([FromQueryAttribute] int page = 1)
         {
-            var transportationCompanies = await _transportationCompanyServices.Paginate(page, 10);
+            var transportationCompanies = await _transportationCompanyServices.FindAllToGrid(page);
 
             return PartialView(transportationCompanies);
         }

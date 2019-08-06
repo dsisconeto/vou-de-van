@@ -1,15 +1,15 @@
 ﻿@using Microsoft.AspNetCore.Html
 
-@model IEnumerable<VouDeVan.Core.Business.Domains.TransportationCompanies.TransportationCompany>
+@model VouDeVan.Core.Business.Support.GridResult<VouDeVan.Core.Business.Domains.TransportationCompanies.TransportationCompany>
 
 @{
     Func<Guid, IHtmlContent> DisplayActions =
         @<div>
-             <a class="btn btn-primary" href="@Url.Action("Edit", new {item})">
+i             <a class="btn btn-primary" asp-action="Edit" asp-route-id="{item}">
                  <span>Editar&nbsp;</span>
                  <i class="fas fa-edit"></i>
              </a>
-            <a class="btn btn-danger" href="@Url.Action("Delete", new {item})">
+            <a class="btn btn-danger" >
                 <span>Excluir&nbsp;</span>
                 <i class="fas fa-trash"></i>
             </a>
@@ -18,21 +18,18 @@
 }
 
 @(Html
-      .Grid(Model)
+      .Grid(Model.Items)
       .Build(columns =>
       {
           columns.Add(transportationCompany => transportationCompany.Id).Titled("#");
           columns.Add(transportationCompany => transportationCompany.SocialName).Titled("Nome Social");
-          //columns.Add(model => model.MaritalStatus).Titled("Marital status");
-          //columns.Add(model => model.Age).Titled("Age");
-          //columns.Add(model => model.Birthday).Titled("Birthday").Formatted("{0:d}");
           columns.Add(model => model.Id).Titled("Ações").RenderedAs(model => DisplayActions(model.Id));
       })
       .Empty("No data found")
       .Pageable(pager =>
       {
-          pager.PagesToDisplay = 2;
-          pager.RowsPerPage = 2;
+          pager.RowsPerPage = Model.RowsRowsPerPage;
+          pager.TotalRows = Model.Total;
       })
       .Sortable()
 )
