@@ -1,21 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using VouDeVan.Infrastructure.Database.TransportationCompanies;
+using VouDeVan.Core.Business.Domains.TransportationCompanies;
 
-namespace VouDeVan.Infrastructure.Database
+namespace VouDeVan.Core.Business
 {
     public class DataBaseContext : DbContext
     {
+        public DbSet<TransportationCompany> TransportationCompanies { get; set; }
+
         public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
         {
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-
-            modelBuilder.Entity<TransportationCompanyDataRow>()
-                .HasIndex(tc => tc.Status);
         }
     }
 }

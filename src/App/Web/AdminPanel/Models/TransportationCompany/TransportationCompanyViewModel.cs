@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using VouDeVan.Core.Business.TransportationCompanies;
+using VouDeVan.Core.Business.Support;
+
 
 namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompany
 {

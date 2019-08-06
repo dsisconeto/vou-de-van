@@ -1,67 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VouDeVan.App.Web.AdminPainel.Models;
 using VouDeVan.App.Web.AdminPainel.Models.TransportationCompany;
+using VouDeVan.Core.Business.Domains.TransportationCompanies;
 using VouDeVan.Core.Business.Support;
-using VouDeVan.Core.Business.TransportationCompanies;
+
 
 namespace VouDeVan.App.Web.AdminPainel.Controllers
 {
     public class TransportationCompaniesController : BaseController
     {
+        private readonly TransportationCompanyServices _transportationCompanyServices;
+
+        public TransportationCompaniesController(TransportationCompanyServices transportationCompanyServices)
+        {
+            _transportationCompanyServices = transportationCompanyServices;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public PartialViewResult IndexGrid()
+        public async Task<PartialViewResult> IndexGrid([FromQueryAttribute] int page = 1)
         {
-            var transportationCompanies = new List<TransportationCompany>
-            {
-                new TransportationCompany(
-                    Guid.NewGuid(),
-                    "AAA",
-                    "aaa",
-                    new Cnpj("78.744.332/0001-78"),
-                    "1313",
-                    new Representative("Gus", new Phone("(63) 99268-9898")),
-                    "123131",
-                    Status.Active
-                ),
-                new TransportationCompany(
-                    Guid.NewGuid(),
-                    "BBB",
-                    "bbb",
-                    new Cnpj("17.642.990/0001-64"),
-                    "e1e423",
-                    new Representative("Gus", new Phone("(63) 99268-9898")),
-                    "424",
-                    Status.Active
-                ),
-                new TransportationCompany(
-                    Guid.NewGuid(),
-                    "BBB",
-                    "bbb",
-                    new Cnpj("17.642.990/0001-64"),
-                    "e1e423",
-                    new Representative("Gus", new Phone("(63) 99268-9898")),
-                    "424",
-                    Status.Active
-                ),
-                new TransportationCompany(
-                    Guid.NewGuid(),
-                    "BBB",
-                    "bbb",
-                    new Cnpj("17.642.990/0001-64"),
-                    "e1e423",
-                    new Representative("Gus", new Phone("(63) 99268-9898")),
-                    "424",
-                    Status.Active
-                )
-            };
-
+            var transportationCompanies = await _transportationCompanyServices.Paginate(page, 10);
 
             return PartialView(transportationCompanies);
         }
@@ -76,31 +42,29 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public IActionResult Create(TransportationCompanyViewModel viewModel)
+        public async Task<IActionResult> Create([FromBody] TransportationCompany transportationCompany)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid == false)
             {
-                //CompanhiaRepository.Add(viewModel);
-                return RedirectToAction("Index");
+                return View(transportationCompany);
             }
-            return View(viewModel);
+
+            await _transportationCompanyServices.Create(transportationCompany);
+
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            //Funcionario funcionario = funci.GetFuncionario(id);
-            //if (funcionario == null)
-            //{
-            //    return NotFound();
-            //}
 
-            //return View(funcionario);
+       
+           
             return View();
         }
 

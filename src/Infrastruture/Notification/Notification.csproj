@@ -1,9 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RootNamespace>VouDeVan.Infrastructure.Notification</RootNamespace>
-    <AssemblyName>VouDeVan.Infrastructure.Notification</AssemblyName>
-  </PropertyGroup>
-
-</Project>
