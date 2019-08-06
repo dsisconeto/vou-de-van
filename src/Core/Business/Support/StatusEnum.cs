@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace VouDeVan.Core.Business.TransportationCompanies
+﻿namespace VouDeVan.Core.Business.Support
 {
     public enum Status
     {

@@ -4,8 +4,9 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using VouDeVan.App.Web.AdminPainel.Models;
 using VouDeVan.App.Web.AdminPainel.Models.TransportationCompany;
+using VouDeVan.Core.Business.Domains.TransportationCompanies;
 using VouDeVan.Core.Business.Support;
-using VouDeVan.Core.Business.TransportationCompanies;
+
 
 namespace VouDeVan.App.Web.AdminPainel.Controllers
 {
@@ -20,46 +21,7 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
         {
             var transportationCompanies = new List<TransportationCompany>
             {
-                new TransportationCompany(
-                    Guid.NewGuid(),
-                    "AAA",
-                    "aaa",
-                    new Cnpj("78.744.332/0001-78"),
-                    "1313",
-                    new Representative("Gus", new Phone("(63) 99268-9898")),
-                    "123131",
-                    Status.Active
-                ),
-                new TransportationCompany(
-                    Guid.NewGuid(),
-                    "BBB",
-                    "bbb",
-                    new Cnpj("17.642.990/0001-64"),
-                    "e1e423",
-                    new Representative("Gus", new Phone("(63) 99268-9898")),
-                    "424",
-                    Status.Active
-                ),
-                new TransportationCompany(
-                    Guid.NewGuid(),
-                    "BBB",
-                    "bbb",
-                    new Cnpj("17.642.990/0001-64"),
-                    "e1e423",
-                    new Representative("Gus", new Phone("(63) 99268-9898")),
-                    "424",
-                    Status.Active
-                ),
-                new TransportationCompany(
-                    Guid.NewGuid(),
-                    "BBB",
-                    "bbb",
-                    new Cnpj("17.642.990/0001-64"),
-                    "e1e423",
-                    new Representative("Gus", new Phone("(63) 99268-9898")),
-                    "424",
-                    Status.Active
-                )
+          
             };
 
 

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NonFactors.Mvc.Grid;
 using VouDeVan.App.Web.AdminPainel.Filters;
-
+using VouDeVan.Core.Business;
 namespace VouDeVan.App.Web.AdminPainel
 {
     public class Startup
@@ -21,7 +21,7 @@ namespace VouDeVan.App.Web.AdminPainel
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddDatabase(Configuration.GetConnectionString("DefaultConnection"));
             services.AddMvcGrid(filters =>
             {
                 filters.BooleanTrueOptionText = () => "True";
@@ -34,7 +34,7 @@ namespace VouDeVan.App.Web.AdminPainel
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
