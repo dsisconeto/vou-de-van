@@ -31,6 +31,7 @@ namespace VouDeVan.Core.Business.Domains.TransportationCompanies
         public string RepresentativePhone { get; set; }
 
         [Column(TypeName = "text")]
+        [MaxLength(1000)]
         public string Observation { get; set; }
 
         [Required]

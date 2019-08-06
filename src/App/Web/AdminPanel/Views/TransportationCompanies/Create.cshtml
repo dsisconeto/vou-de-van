@@ -16,32 +16,81 @@
                 </div>
             </div>
             <div class="card-body">
-                @using (Html.BeginForm("Create", "TransportationCompanies", FormMethod.Post))
-                {
+                <form asp-action="Create" method="post">
                     <div class="form-row">
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="position-relative form-group">
-                                @Html.LabelFor(transportationCompany => transportationCompany.FantasyName)
-                                @Html.EditorFor(transportationCompany => transportationCompany.FantasyName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome verdadeiro da empresa" } })
+                                <label asp-for="SocialName">Razão Social*</label>
+                                <input asp-for="SocialName" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+
+                        <div class="col-md-5">
                             <div class="position-relative form-group">
-                                @Html.LabelFor(transportationCompany => transportationCompany.SocialName)
-                                @Html.EditorFor(transportationCompany => transportationCompany.SocialName, new { htmlAttributes = new { @class = "form-control" } })
+                                <label asp-for="FantasyName">Nome Fantasia*</label>
+                                <input asp-for="FantasyName" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="position-relative form-group">
+                                <label asp-for="CNPJ">CNPJ*</label>
+                                <input asp-for="CNPJ" class="form-control">
                             </div>
                         </div>
                     </div>
+
                     <div class="form-row">
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <div class="position-relative form-group">
-                                @Html.LabelFor(transportationCompany => transportationCompany.Cnpj)
-                                @Html.EditorFor(transportationCompany => transportationCompany.Cnpj, new { htmlAttributes = new { @class = "form-control" } })
+                                <label asp-for="Address">Endereço*</label>
+                                <input asp-for="Address" class="form-control">
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="mt-2 btn btn-primary">Enviar</button>
-                }
+
+                    <div class="form-row">
+                        <div class="col-md-8">
+                            <div class="position-relative form-group">
+                                <label asp-for="RepresentativeName">Nome do Representante*</label>
+                                <input asp-for="RepresentativeName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="position-relative form-group">
+                                <label asp-for="RepresentativePhone">Telefone do Representante*</label>
+                                <input asp-for="RepresentativePhone" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="position-relative form-group">
+                                <label asp-for="Status">Status*</label>
+                                <select asp-for="Status" asp-items="Model.Statuses" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="position-relative form-group">
+                                <label asp-for="Observation">Observações*</label>
+                                <textarea asp-for="Observation" class="form-control" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary float-right">Cadastrar</button>
+                        </div>
+                    </div>
+
+                </form>
+
             </div>
         </div>
     </div>

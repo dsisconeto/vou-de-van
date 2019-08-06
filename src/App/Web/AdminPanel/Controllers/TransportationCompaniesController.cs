@@ -35,9 +35,8 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var viewModel = new TransportationCompanyViewModel();
-
-            return View(viewModel);
+         
+            return View(new TransportationCompanyViewModel());
         }
 
         [HttpPost]
