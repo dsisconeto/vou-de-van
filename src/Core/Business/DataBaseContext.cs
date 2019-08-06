@@ -5,7 +5,7 @@ namespace VouDeVan.Core.Business
 {
     public class DataBaseContext : DbContext
     {
-        public DbSet<TransportationCompany> TransportationCompany { get; set; }
+        public DbSet<TransportationCompany> TransportationCompanies { get; set; }
 
         public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
         {
