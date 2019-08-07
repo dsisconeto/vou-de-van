@@ -11,7 +11,6 @@ using VouDeVan.App.Web.AdminPainel.Models.TransportationCompany;
 using VouDeVan.Core.Business.Domains.TransportationCompanies;
 using VouDeVan.Core.Business.Support;
 
-
 namespace VouDeVan.App.Web.AdminPainel.Controllers
 {
     public class TransportationCompaniesController : BaseController
@@ -56,7 +55,6 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
 
             var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
 
-
             await _transportationCompanyServices.Create(transportationCompany);
 
             return RedirectToAction("Index");
@@ -72,7 +70,6 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
 
             var transportationCompany = await _transportationCompanyServices.FindById(Guid.Parse(id));
 
-
             var transportationCompanyViewModel = _mapper.Map<TransportationCompanyViewModel>(transportationCompany);
 
             return View(transportationCompanyViewModel);
@@ -87,7 +84,6 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
             {
                 return NotFound();
             }
-
 
             if (ModelState.IsValid == false)
             {

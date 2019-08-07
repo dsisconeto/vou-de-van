@@ -6,6 +6,7 @@ namespace VouDeVan.Core.Business.Support
 {
     public class DefaultEntity
     {
+        [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }

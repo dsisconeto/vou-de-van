@@ -90,7 +90,7 @@ namespace VouDeVan.Core.Business.Domains.TransportationCompanies
 
             if (id != null)
             {
-                query = query.Where(tc => tc.Id == id);
+                query = query.Where(tc => tc.Id != id);
             }
 
             return query.Any();

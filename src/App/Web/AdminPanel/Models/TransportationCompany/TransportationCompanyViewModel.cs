@@ -6,12 +6,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VouDeVan.Core.Business.Support;
 
-
 namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompany
 {
     public class TransportationCompanyViewModel
     {
-
         public Guid? Id { get; set; }
 
         [Required] [MaxLength(14)] public string CNPJ { get; set; }
@@ -32,7 +30,6 @@ namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompany
 
         [Required] 
         public Status Status { get; set; } = Status.Active;
-
 
         public List<SelectListItem> Statuses { get; } = new List<SelectListItem>
         {
