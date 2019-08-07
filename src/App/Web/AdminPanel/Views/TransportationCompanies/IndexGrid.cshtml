@@ -4,17 +4,49 @@
 
 @model GridResult<TransportationCompany>
 
+@{
 
+    Func<Guid, IHtmlContent> displayActions =
+        @<div>
+
+            <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item">
+
+                <i class="fas fa-edit"></i>
+            </a>
+
+            <form class="btn-form" asp-action="Delete" asp-route-id="@item" asp-antiforgery="true">
+                <button type="submit" class="btn btn-danger btn-sm">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </form>
+        </div>;
+}
 
 @(Html.Grid(Model.Items)
       .Build(columns =>
       {
+          columns.Add(transportationCompany => transportationCompany.FantasyName)
+              .Titled("Nome Fantasia");
+
           columns.Add(transportationCompany => transportationCompany.SocialName)
-              .Titled("Nome Social");
+              .Titled("Razão Social");
+
+
+          columns.Add(transportationCompany => transportationCompany.CNPJ)
+              .Titled("CNPJ");
+
+
+          columns.Add(transportationCompany => transportationCompany.RepresentativeName)
+              .Titled("Representante");
+
+
+          columns.Add(transportationCompany => transportationCompany.RepresentativePhone)
+              .Titled("Telefone do Representante");
+
 
           columns.Add(transportationCompany => transportationCompany.Id)
               .Titled("Ações")
-              .RenderedAs(transportationCompany => DisplayActions(transportationCompany));
+              .RenderedAs(company => displayActions(company.Id));
       })
       .Empty("Ainda Não existe empresas cadastradas")
       .Pageable(pager =>
@@ -24,21 +56,3 @@
       })
       .Sortable()
       )
-
-
-@{
-
-    IHtmlContent DisplayActions(TransportationCompany transportationCompany) => 
-        @<div>
-            
-            <a class="btn btn-primary" asp-action="Edit" asp-route-id="">
-                <span>Editar&nbsp;</span>
-                <i class="fas fa-edit"></i>
-            </a>
-            <a class="btn btn-danger">
-                <span>Excluir&nbsp;</span>
-                <i class="fas fa-trash"></i>
-            </a>
-        </div>;
-
-}

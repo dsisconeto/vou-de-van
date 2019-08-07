@@ -48,11 +48,20 @@ namespace VouDeVan.Core.Business.Domains.TransportationCompanies
         }
 
 
-        public async void Delete(TransportationCompany transportationCompany)
+        public async Task Delete(Guid id)
         {
             // TODO verificar relações quando tiver.
 
-            _dataBaseContext.TransportationCompanies.Remove(transportationCompany);
+             var transportationCompany  = await FindById(id);
+
+
+             if (transportationCompany == null)
+             {
+                 throw  new BusinessException("Empresa de transporte não encontrada");
+             }
+
+             _dataBaseContext.TransportationCompanies.Remove(transportationCompany);
+
             await _dataBaseContext.SaveChangesAsync();
         }
 

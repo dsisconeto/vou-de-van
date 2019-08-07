@@ -16,13 +16,14 @@
                 </div>
             </div>
             <div class="card-body">
-                <form asp-action="Create" method="post" asp-antiforgery="true">
-                    <partial name="Fields" model="@Model" />
+                <form asp-action="Edit" asp-route-id="@Model.Id" method="post" asp-antiforgery="true">
+                    <partial name="Fields" model="@Model"  />
                     <div class="form-row">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            <button type="submit" class="btn btn-primary">Editar</button>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>

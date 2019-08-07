@@ -10,7 +10,7 @@ using VouDeVan.Core.Business;
 namespace VouDeVan.Core.Business.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20190806165007_CreateTransportationCompaniesTable")]
+    [Migration("20190807010410_CreateTransportationCompaniesTable")]
     partial class CreateTransportationCompaniesTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,7 +41,8 @@ namespace VouDeVan.Core.Business.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("Observation")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasMaxLength(1000);
 
                     b.Property<string>("RepresentativeName")
                         .IsRequired()

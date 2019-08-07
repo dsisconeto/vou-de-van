@@ -39,7 +39,8 @@ namespace VouDeVan.Core.Business.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("Observation")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasMaxLength(1000);
 
                     b.Property<string>("RepresentativeName")
                         .IsRequired()

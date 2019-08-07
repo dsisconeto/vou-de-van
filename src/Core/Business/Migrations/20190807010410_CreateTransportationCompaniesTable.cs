@@ -20,7 +20,7 @@ namespace VouDeVan.Core.Business.Migrations
                     Address = table.Column<string>(maxLength: 400, nullable: false),
                     RepresentativeName = table.Column<string>(maxLength: 100, nullable: false),
                     RepresentativePhone = table.Column<string>(maxLength: 11, nullable: false),
-                    Observation = table.Column<string>(type: "text", nullable: true),
+                    Observation = table.Column<string>(type: "text", maxLength: 1000, nullable: true),
                     Status = table.Column<int>(maxLength: 40, nullable: false)
                 },
                 constraints: table =>

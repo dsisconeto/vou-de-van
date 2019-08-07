@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using VouDeVan.App.Web.AdminPainel.Models;
 using VouDeVan.App.Web.AdminPainel.Models.TransportationCompany;
 using VouDeVan.Core.Business.Domains.TransportationCompanies;
@@ -61,50 +63,55 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(string id)
+        public async Task<IActionResult> Edit(string id)
         {
-            if (id == null)
+            if (ValidateGuid(id) == false)
             {
                 return NotFound();
             }
 
+            var transportationCompany = await _transportationCompanyServices.FindById(Guid.Parse(id));
 
-            return View();
+
+            var transportationCompanyViewModel = _mapper.Map<TransportationCompanyViewModel>(transportationCompany);
+
+            return View(transportationCompanyViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(string id,
+            [FromForm] TransportationCompanyViewModel transportationCompanyViewModel)
         {
-            //if (id != funcionario.FuncionarioId)
-            //{
-            //    return NotFound();
-            //}
-
-            if (ModelState.IsValid)
+            if (ValidateGuid(id) == false)
             {
-                //fCompanhiaRepositoryunci.UpdateFuncionario(funcionario);
-                return RedirectToAction("Index");
+                return NotFound();
             }
 
-            //return View(companhias);
-            return View();
+
+            if (ModelState.IsValid == false)
+            {
+                return View(transportationCompanyViewModel);
+            }
+
+            var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
+
+            await _transportationCompanyServices.Update(transportationCompany);
+
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public IActionResult Delete(int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            return View();
-        }
-
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
-            //CompanhiaRepository.DeleteFuncionario(id);
+            if (ValidateGuid(id) == false)
+            {
+                return NotFound();
+            }
+
+            await _transportationCompanyServices.Delete(Guid.Parse(id));
+
             return RedirectToAction("Index");
         }
     }
