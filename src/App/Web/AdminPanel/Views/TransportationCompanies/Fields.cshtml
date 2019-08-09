@@ -47,17 +47,14 @@
     </div>
     <div class="col-md-2">
         <div class="position-relative form-group">
-            <label asp-for="RepresentativePhone">Telefone do Representante*</label>
-            <input asp-for="RepresentativePhone" class="form-control">
-        </div>
-    </div>
-</div>
-
-<div class="form-row">
-    <div class="col-md-12">
-        <div class="position-relative form-group">
             <label asp-for="Status">Status*</label>
             <select asp-for="Status" asp-items="Model.Statuses" class="form-control"></select>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="position-relative form-group">
+            <label asp-for="RepresentativePhone">Telefone do Representante*</label>
+            <input asp-for="RepresentativePhone" class="form-control">
         </div>
     </div>
 </div>
@@ -70,5 +67,3 @@
         </div>
     </div>
 </div>
-
-

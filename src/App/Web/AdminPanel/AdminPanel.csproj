@@ -7,6 +7,10 @@
     <AssemblyName>VouDeVan.App.Web.AdminPainel</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\js\main.min.js" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.1" />
@@ -19,7 +23,6 @@
 
 
   <ItemGroup>
-    <None Include="wwwroot\css\main.css" />
     <None Include="wwwroot\css\mvc-grid\fonts\grid-glyphs.woff" />
     <None Include="wwwroot\css\mvc-grid\mvc-grid.css" />
     <None Include="wwwroot\fonts\fa-solid-900.eot" />
@@ -41,7 +44,6 @@
     <None Include="wwwroot\img\avatars\5.jpg" />
     <None Include="wwwroot\img\avatars\8.jpg" />
     <None Include="wwwroot\img\avatars\9.jpg" />
-    <None Include="wwwroot\js\main.js" />
     <None Include="wwwroot\js\mvc-grid\mvc-grid.js" />
   </ItemGroup>
 
