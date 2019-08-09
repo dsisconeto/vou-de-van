@@ -7,10 +7,6 @@
     <AssemblyName>VouDeVan.App.Web.AdminPainel</AssemblyName>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="wwwroot\js\main.min.js" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.1" />
@@ -25,26 +21,10 @@
   <ItemGroup>
     <None Include="wwwroot\css\mvc-grid\fonts\grid-glyphs.woff" />
     <None Include="wwwroot\css\mvc-grid\mvc-grid.css" />
-    <None Include="wwwroot\fonts\fa-solid-900.eot" />
-    <None Include="wwwroot\fonts\fa-solid-900.svg" />
-    <None Include="wwwroot\fonts\fa-solid-900.ttf" />
-    <None Include="wwwroot\fonts\fa-solid-900.woff" />
-    <None Include="wwwroot\fonts\fa-solid-900.woff2" />
-    <None Include="wwwroot\fonts\Pe-icon-7-stroke.eot" />
-    <None Include="wwwroot\fonts\Pe-icon-7-stroke.svg" />
-    <None Include="wwwroot\fonts\Pe-icon-7-stroke.ttf" />
-    <None Include="wwwroot\fonts\Pe-icon-7-stroke.woff" />
-    <None Include="wwwroot\img\avatars\1.jpg" />
-    <None Include="wwwroot\img\avatars\10.jpg" />
-    <None Include="wwwroot\img\avatars\11.jpg" />
-    <None Include="wwwroot\img\avatars\12.jpg" />
-    <None Include="wwwroot\img\avatars\2.jpg" />
-    <None Include="wwwroot\img\avatars\3.jpg" />
-    <None Include="wwwroot\img\avatars\4.jpg" />
-    <None Include="wwwroot\img\avatars\5.jpg" />
-    <None Include="wwwroot\img\avatars\8.jpg" />
-    <None Include="wwwroot\img\avatars\9.jpg" />
-    <None Include="wwwroot\js\mvc-grid\mvc-grid.js" />
+    <None Include="wwwroot\plugins\jquery-asColorPicker-master\.github\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\plugins\jquery-asColorPicker-master\.github\PULL_REQUEST_TEMPLATE.md" />
+    <None Include="wwwroot\plugins\jquery-wizard-master\.github\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\plugins\jquery-wizard-master\.github\PULL_REQUEST_TEMPLATE.md" />
   </ItemGroup>
 
 
