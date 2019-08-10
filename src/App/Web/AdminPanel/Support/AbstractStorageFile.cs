@@ -21,28 +21,22 @@ namespace VouDeVan.App.Web.AdminPainel.Support
 
         protected abstract void MakeDirectory(string path);
 
-        public async Task<T> Store<T>(IFormFile file)
-            where T : StoreableFile, new()
+        public async Task<T> Store<T>(IFormFile file) where T : StoreableFile, new()
         {
-            // Make data
             var storableFile = new T();
             var path = MakePath(storableFile.Path);
             MakeDirectory(path);
             var randomName = MakeRandomName(file);
             path = Path.Combine(path, randomName);
 
-
-            // Coping File
             await CopyFileTo(path, file);
 
-            // Fill Data
             storableFile.FileName = randomName;
             storableFile.ContentType = file.ContentType;
             storableFile.Extension = MakeExtension(file);
 
             return storableFile;
         }
-
 
         private string MakePath(string path)
         {

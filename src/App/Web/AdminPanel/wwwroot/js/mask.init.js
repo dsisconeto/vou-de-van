@@ -1,19 +1,19 @@
 $(function() {
   $('.date').mask('00/00/0000');
   $('.time').mask('00:00:00');
-  $('.date_time').mask('00/00/0000 00:00:00');
+  $('.date-time').mask('00/00/0000 00:00:00');
   $('.cep').mask('00000-000');
   
-    var behavior = function (val) {
+    var phnoeBehavior = function (val) {
         return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
     },
-    options = {
+    phoneOptions = {
         onKeyPress: function (val, e, field, options) {
             field.mask(behavior.apply({}, arguments), options);
         }
     };
 
-  $('.phone').mask(behavior, options);
+  $('.phone').mask(phnoeBehavior, phoneOptions);
 
   $('.cnpj').mask('00.000.000/0000-00', {reverse: true});
   $('.cpf').mask('000.000.000-00', {reverse: true});
@@ -54,22 +54,6 @@ $(function() {
   }});
 
   $('.money').mask('#.##0,00', {reverse: true});
-
-  var SPMaskBehavior = function (val) {
-    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-  },
-  spOptions = {
-    onKeyPress: function(val, e, field, options) {
-        field.mask(SPMaskBehavior.apply({}, arguments), options);
-      }
-  };
-
-  $('.sp_celphones').mask(SPMaskBehavior, spOptions);
-
-  $(".bt-mask-it").click(function(){
-    $(".mask-on-div").mask("000.000.000-00");
-    $(".mask-on-div").fadeOut(500).fadeIn(500)
-  })
 
   $('pre').each(function(i, e) {hljs.highlightBlock(e)});
 });

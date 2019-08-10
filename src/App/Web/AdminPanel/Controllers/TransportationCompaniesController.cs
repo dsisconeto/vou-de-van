@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using VouDeVan.App.Web.AdminPainel.Controllers;
 using VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies;
 using VouDeVan.App.Web.AdminPainel.Support;
@@ -13,18 +14,21 @@ namespace AdminPainel.Controllers
 {
     public class TransportationCompaniesController : BaseController
     {
+        private readonly IToastNotification _toastNotification;
+
         private readonly TransportationCompanyServices _transportationCompanyServices;
         private readonly IMapper _mapper;
         private readonly AbstractStorageFile _storageFile;
 
         public TransportationCompaniesController(TransportationCompanyServices transportationCompanyServices,
-            IMapper mapper, AbstractStorageFile storageFile)
+            IMapper mapper, AbstractStorageFile storageFile, IToastNotification toastNotification)
         {
             _transportationCompanyServices = transportationCompanyServices;
             _mapper = mapper;
             _storageFile = storageFile;
+            _toastNotification = toastNotification;
         }
-
+        
         public IActionResult Index()
         {
             return View();
@@ -53,21 +57,32 @@ namespace AdminPainel.Controllers
                 return View(transportationCompanyViewModel);
             }
 
-
-            // TODO gamiarra aqui
-            if (transportationCompanyViewModel.LogoSizeIsValid == false)
+            try
             {
+                // TODO gamiarra aqui
+                if (transportationCompanyViewModel.LogoSizeIsValid == false)
+                {
+                    return View(transportationCompanyViewModel);
+                }
+
+                // TODO apagar se der erro tem que apagar  a imagem
+
+                var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
+                transportationCompany.Logo = await _storageFile.Store<Logo>(transportationCompanyViewModel.Logo);
+
+                await _transportationCompanyServices.Create(transportationCompany);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _toastNotification.AddErrorToastMessage(ex?.Message);
+
+                if (ex.InnerException != null)
+                    _toastNotification.AddErrorToastMessage(ex?.InnerException.Message);
+
                 return View(transportationCompanyViewModel);
             }
-
-            // TODO apagar se der erro tem que apagar  a imagem
-
-            var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
-            transportationCompany.Logo = await _storageFile.Store<Logo>(transportationCompanyViewModel.Logo);
-
-            await _transportationCompanyServices.Create(transportationCompany);
-
-            return RedirectToAction("Index");
         }
 
         [HttpGet]

@@ -94,13 +94,13 @@ $(function() {
     //tooltip
     // ============================================================== 
     $(function() {
-        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="tooltip"]').tooltip();
     })
     // ============================================================== 
     //Popover
     // ============================================================== 
     $(function() {
-        $('[data-toggle="popover"]').popover()
+        $('[data-toggle="popover"]').popover();
     })
     // ============================================================== 
     // Sidebarmenu
@@ -156,4 +156,10 @@ $(function() {
 
 $(".content-refresh").on( "click", function() {
     new MvcGrid(document.querySelector('.mvc-grid')).reload();
+});
+
+$("form").submit(function() {
+  $(".cnpj").unmask();
+  $(".phone").unmask();
+  $(".cep").unmask();
 });

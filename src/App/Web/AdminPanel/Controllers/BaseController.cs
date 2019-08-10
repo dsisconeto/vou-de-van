@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using VouDeVan.App.Web.AdminPainel.Models.Common;
 
 namespace VouDeVan.App.Web.AdminPainel.Controllers
@@ -12,7 +13,6 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
-
 
         public bool ValidateGuid(string id) => id != null && Guid.TryParse(id, out _);
     }

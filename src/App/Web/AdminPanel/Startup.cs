@@ -43,7 +43,7 @@ namespace VouDeVan.App.Web.AdminPainel
                 PositionClass = ToastPositions.TopRight
             });
 
-             services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             services.AddMvc()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)

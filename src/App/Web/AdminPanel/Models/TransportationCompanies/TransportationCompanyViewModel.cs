@@ -43,7 +43,8 @@ namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies
             new SelectListItem {Value = ((int) Status.Created).ToString(), Text = "Criado"},
         };
 
-        [Required] public IFormFile Logo { get; set; }
+        [Required] 
+        public IFormFile Logo { get; set; }
 
         public bool LogoSizeIsValid => Logo != null && Logo.Length > 0 && Logo.Length < 10000;
     }

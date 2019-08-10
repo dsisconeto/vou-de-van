@@ -25,8 +25,10 @@ namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies
 
         public string Logo
         {
-            get;
-            set;
+            set
+            {
+                _logo = value;
+            }
         }
 
         public string _logo;
