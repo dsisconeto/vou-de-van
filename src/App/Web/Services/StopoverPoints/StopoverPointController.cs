@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Services.StopoverPoints
 {
-    [ApiController]
-    [Route("stopover-points")]
+    //[ApiController]
+    //[Route("stopover-points")]
 
 }

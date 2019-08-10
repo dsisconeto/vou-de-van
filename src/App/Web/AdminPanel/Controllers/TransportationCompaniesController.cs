@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using VouDeVan.App.Web.AdminPainel.Controllers;
+using VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies;
 using VouDeVan.App.Web.AdminPainel.Support;
 using VouDeVan.Core.Business.Domains.TransportationCompanies;
 
-namespace VouDeVan.App.Web.AdminPainel.TransportationCompanies
+namespace AdminPainel.Controllers
 {
     public class TransportationCompaniesController : BaseController
     {
@@ -32,7 +33,6 @@ namespace VouDeVan.App.Web.AdminPainel.TransportationCompanies
         public async Task<PartialViewResult> IndexGrid([FromQuery] int page = 1)
         {
             var transportationCompanies = await _transportationCompanyServices.FindAllToGrid(page);
-
 
             return PartialView(transportationCompanies);
         }

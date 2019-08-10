@@ -1,9 +1,10 @@
-﻿@model VouDeVan.App.Web.AdminPainel.TransportationCompanies.TransportationCompanyViewModel
+﻿@model VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies.TransportationCompanyViewModel
 @{
 
     ViewData["Title"] = "View";
 }
 
+<div asp-validation-summary="ModelOnly"></div>
 <input asp-for="Id" hidden />
 
 <div class="form-row">
@@ -40,7 +41,7 @@
             <span asp-validation-for="Address" class="text-danger"></span>
         </div>
     </div>
-    
+
     <div class="col-md-2">
         <div class="position-relative form-group">
             <label asp-for="Logo">Logo*</label>
@@ -77,7 +78,7 @@
 <div class="form-row">
     <div class="col-md-12">
         <div class="position-relative form-group">
-            <label asp-for="Observation">Observações*</label>
+            <label asp-for="Observation">Observações</label>
             <textarea asp-for="Observation" class="form-control" rows="10"></textarea>
             <span asp-validation-for="Observation" class="text-danger"></span>
         </div>

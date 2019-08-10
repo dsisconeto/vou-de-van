@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VouDeVan.Core.Business.Support;
 
-namespace VouDeVan.App.Web.AdminPainel.TransportationCompanies
+namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies
 {
     public class TransportationCompanyGridViewModel
     {
@@ -26,11 +26,7 @@ namespace VouDeVan.App.Web.AdminPainel.TransportationCompanies
         public string Logo
         {
             get;
-            set
-            {
-                _logo
-
-            }
+            set;
         }
 
         public string _logo;

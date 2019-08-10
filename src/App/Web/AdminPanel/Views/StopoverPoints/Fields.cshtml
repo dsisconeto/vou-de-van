@@ -4,6 +4,7 @@
     ViewData["Title"] = "View";
 }
 
+    <div asp-validation-summary="ModelOnly"></div>
 <input asp-for="Id" hidden />
 
 <div class="form-row">
@@ -13,14 +14,12 @@
             <input asp-for="Name" class="form-control">
         </div>
     </div>
-
     <div class="col-md-5">
         <div class="position-relative form-group">
             <label asp-for="Latitude">Latitude*</label>
             <input asp-for="Latitude" class="form-control">
         </div>
     </div>
-
     <div class="col-md-2">
         <div class="position-relative form-group">
             <label asp-for="Longitude">Longitude*</label>

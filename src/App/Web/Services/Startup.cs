@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
+using VouDeVan.Core.Business;
 
 namespace VouDeVan.App.Web.Services
 {
@@ -18,8 +19,7 @@ namespace VouDeVan.App.Web.Services
 
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddDatabase(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddDbContext<DataBaseContext>(options => options.UseSqlServer((Configuration.GetConnectionString("DefaultConnection"))));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

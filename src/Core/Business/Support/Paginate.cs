@@ -12,7 +12,6 @@ namespace VouDeVan.Core.Business.Support
 
         public List<T> Items { get; set; }
 
-
         public Paginate(List<T> items, int total, int perPage = 10)
         {
             Items = items;

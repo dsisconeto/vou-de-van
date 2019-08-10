@@ -32,4 +32,9 @@
     <ProjectReference Include="..\..\..\Core\Business\Business.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>

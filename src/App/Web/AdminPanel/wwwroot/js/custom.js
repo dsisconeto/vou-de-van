@@ -4,7 +4,7 @@ $(function() {
         $(".preloader").fadeOut();
     });
     jQuery(document).on('click', '.mega-dropdown', function(e) {
-        e.stopPropagation()
+        e.stopPropagation();
     });
     // ============================================================== 
     // This is for the top header part and sidebar part
@@ -148,4 +148,12 @@ $(function() {
         $(this).closest('.card').removeClass().slideUp('fast');
     });
 
+});
+
+[].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
+            new MvcGrid(element);
+});
+
+$(".content-refresh").on( "click", function() {
+    new MvcGrid(document.querySelector('.mvc-grid')).reload();
 });

@@ -5,17 +5,11 @@
 
 <div class="container-fluid">
     <div class="row page-titles">
-        @*<div class="col-md-5 align-self-center">
-            <h3 class="text-themecolor">Companhias de Transporte</h3>
-        </div>*@
         <div class="col-12 align-self-end">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Dashboard</a></li>
                 <li class="breadcrumb-item active">Companhias de Transporte</li>
             </ol>
-        </div>
-        <div>
-            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
         </div>
     </div>
     <div class="row">
@@ -28,7 +22,7 @@
                         </div>
                         <div class="ml-auto">
                             <a asp-action="Create" class="btn-shadow btn btn-success"><i class="fas fa-plus"></i>&nbsp;Novo</a>
-                            <button class="btn-shadow btn btn-dark"><i class="fas fa-sync"></i>&nbsp;Atualizar</button>
+                            <button class="btn-shadow btn btn-dark content-refresh"><i class="fas fa-sync"></i>&nbsp;Atualizar</button>
                         </div>
                     </div>
                     @Html.AjaxGrid(Url.Action("IndexGrid"))

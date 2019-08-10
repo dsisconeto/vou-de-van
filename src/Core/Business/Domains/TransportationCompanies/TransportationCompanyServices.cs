@@ -84,9 +84,6 @@ namespace VouDeVan.Core.Business.Domains.TransportationCompanies
             return new Paginate<TransportationCompany>(transportationCompanies, total, rowsPerPage);
         }
 
-
-
-
         public bool HasCompanySameCpnj(string cnpj, Guid? id = null)
         {
             var query = _dataBaseContext.TransportationCompanies.Where(tc => tc.CNPJ == cnpj);

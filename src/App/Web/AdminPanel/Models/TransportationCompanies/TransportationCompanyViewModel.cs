@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Rewrite.Internal.UrlMatches;
 using VouDeVan.Core.Business.Support;
 
-namespace VouDeVan.App.Web.AdminPainel.TransportationCompanies
+namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies
 {
     public class TransportationCompanyViewModel
     {

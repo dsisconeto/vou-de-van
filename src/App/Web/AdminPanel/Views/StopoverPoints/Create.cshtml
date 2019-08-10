@@ -1,29 +1,36 @@
 ﻿@model VouDeVan.App.Web.AdminPainel.Models.StopoverPoints.StopoverPointsViewModel
 
 @{
-    ViewData["Title"] = "Nova Ponto de Parada";
+    ViewData["Title"] = "Cadastrar Ponto de Parada";
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="main-card mb-3 card">
-            <div class="card-header">
-                Cadastrar Ponto de Parada
-                <div class="btn-actions-pane-right">
-                    <div role="group" class="btn-group-sm btn-group">
-                        <a asp-action="Index" class="btn-shadow btn btn-dark">Voltar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <form asp-action="Create" method="post" asp-antiforgery="true">
-                    <partial name="Fields" model="@Model" />
-                    <div class="form-row">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Cadastrar</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Dashboard</a></li>
+                <li class="breadcrumb-item"><a asp-action="Index">Pontos de Parada</a></li>
+                <li class="breadcrumb-item active">Cadastrar</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="Create" method="post" asp-antiforgery="true">
+                        <partial name="Fields" model="@Model" />
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <a asp-action="Index" class="btn-shadow btn btn-dark">Voltar</a>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

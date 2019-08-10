@@ -1,29 +1,36 @@
-﻿@model VouDeVan.App.Web.AdminPainel.TransportationCompanies.TransportationCompanyViewModel
+﻿@model VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies.TransportationCompanyViewModel
 
 @{
     ViewData["Title"] = $"Editar Empresa de Transporte - {Model.FantasyName}";
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="main-card mb-3 card">
-            <div class="card-header">
-                Cadastrar Empresa
-                <div class="btn-actions-pane-right">
-                    <div role="group" class="btn-group-sm btn-group">
-                        <a asp-action="Index" class="btn-shadow btn btn-dark">Voltar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <form asp-action="Edit" asp-route-id="@Model.Id" method="post" asp-antiforgery="true" enctype="multipart/form-data">
-                    <partial name="Fields" model="@Model" />
-                    <div class="form-row">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary">Editar</button>
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Editar</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Dashboard</a></li>
+                <li class="breadcrumb-item"><a asp-action="Index">Companhias de Transporte</a></li>
+                <li class="breadcrumb-item active">Editar</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="Edit" asp-route-id="@Model.Id" method="post" asp-antiforgery="true" enctype="multipart/form-data">
+                        <partial name="Fields" model="@Model" />
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary">Editar</button>
+                                <a asp-action="Index" class="btn-shadow btn btn-dark">Voltar</a>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
