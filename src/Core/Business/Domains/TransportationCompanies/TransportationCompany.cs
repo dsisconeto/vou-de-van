@@ -17,6 +17,8 @@ namespace VouDeVan.Core.Business.Domains.TransportationCompanies
         [Required]
         [MaxLength(100)]
         public string SocialName { get; set; }
+    
+        public Logo Logo { get; set; }
 
         [Required]
         [MaxLength(400)]

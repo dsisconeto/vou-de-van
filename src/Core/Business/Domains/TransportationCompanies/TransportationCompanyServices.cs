@@ -70,7 +70,7 @@ namespace VouDeVan.Core.Business.Domains.TransportationCompanies
             return await _dataBaseContext.TransportationCompanies.FirstOrDefaultAsync(tc => tc.Id == id);
         }
 
-        public async Task<GridResult<TransportationCompany>> FindAllToGrid(int page, int rowsPerPage = 10)
+        public async Task<Paginate<TransportationCompany>> FindAllToGrid(int page, int rowsPerPage = 10)
         {
             var skip = (page - 1) * rowsPerPage;
 
@@ -81,8 +81,11 @@ namespace VouDeVan.Core.Business.Domains.TransportationCompanies
                 .Take(rowsPerPage)
                 .ToListAsync();
 
-            return new GridResult<TransportationCompany>(transportationCompanies, total, rowsPerPage);
+            return new Paginate<TransportationCompany>(transportationCompanies, total, rowsPerPage);
         }
+
+
+
 
         public bool HasCompanySameCpnj(string cnpj, Guid? id = null)
         {

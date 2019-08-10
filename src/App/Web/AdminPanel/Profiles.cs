@@ -1,6 +1,11 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using VouDeVan.App.Web.AdminPainel.Controllers;
+using VouDeVan.App.Web.AdminPainel.TransportationCompanies;
 using VouDeVan.Core.Business.Domains.StopoverPoints;
-using VouDeVan.App.Web.AdminPainel.Models.TransportationCompany;
 using VouDeVan.Core.Business.Domains.TransportationCompanies;
 using VouDeVan.App.Web.AdminPainel.Models.StopoverPoints;
 
@@ -12,8 +17,8 @@ namespace VouDeVan.App.Web.AdminPainel
         public Profiles()
         {
             CreateMap<TransportationCompany, TransportationCompanyViewModel>();
-            CreateMap<TransportationCompanyViewModel, TransportationCompany>();
-
+            CreateMap<TransportationCompanyViewModel, TransportationCompany>()
+                .ForMember(dest => dest.Logo, opt => opt.Ignore());
             CreateMap<StopoverPoint, StopoverPointsViewModel>();
             CreateMap<StopoverPointsViewModel, StopoverPoint>();
         }

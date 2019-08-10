@@ -1,4 +1,4 @@
-﻿@model VouDeVan.App.Web.AdminPainel.Models.TransportationCompany.TransportationCompanyViewModel
+﻿@model VouDeVan.App.Web.AdminPainel.TransportationCompanies.TransportationCompanyViewModel
 
 @{
     ViewData["Title"] = "Nova Empresa de Transporte";
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form asp-action="Create" method="post" asp-antiforgery="true">
+                <form asp-action="Create" method="post" asp-antiforgery="true" enctype="multipart/form-data">
                     <partial name="Fields" model="@Model" />
                     <div class="form-row">
                         <div class="col-md-12">
@@ -32,15 +32,6 @@
 
 @section Scripts {
     <script type="text/javascript">
-
-        var behavior = function (val) {
-            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-        },
-        options = {
-            onKeyPress: function (val, e, field, options) {
-                field.mask(behavior.apply({}, arguments), options);
-            }
-        };
 
         $('#RepresentativePhone').mask(behavior, options);
 

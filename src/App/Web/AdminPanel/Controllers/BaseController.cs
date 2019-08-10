@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using VouDeVan.App.Web.AdminPainel.Models;
 using VouDeVan.App.Web.AdminPainel.Models.Common;
 
 namespace VouDeVan.App.Web.AdminPainel.Controllers

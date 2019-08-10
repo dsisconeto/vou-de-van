@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VouDeVan.Core.Business;
 
 namespace VouDeVan.Core.Business.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20190810042905_CreateGeosTable")]
+    partial class CreateGeosTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,10 +50,6 @@ namespace VouDeVan.Core.Business.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<string>("Initials")
-                        .IsRequired()
-                        .HasMaxLength(2);
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50);
@@ -72,11 +70,9 @@ namespace VouDeVan.Core.Business.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<decimal>("Latitude")
-                        .HasColumnType("decimal(10,8)");
+                    b.Property<decimal>("Latitude");
 
-                    b.Property<decimal>("Longitude")
-                        .HasColumnType("decimal(11,8)");
+                    b.Property<decimal>("Longitude");
 
                     b.Property<string>("Name")
                         .IsRequired()

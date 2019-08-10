@@ -18,7 +18,8 @@ namespace VouDeVan.App.Web.Services
 
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
+            services.AddDatabase(Configuration.GetConnectionString("DefaultConnection"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

@@ -2,7 +2,7 @@
 @using VouDeVan.Core.Business.Domains.TransportationCompanies
 @using VouDeVan.Core.Business.Support
 
-@model GridResult<TransportationCompany>
+@model Paginate<TransportationCompany>
 
 @{
 
@@ -24,6 +24,9 @@
 @(Html.Grid(Model.Items)
       .Build(columns =>
       {
+          columns.Add(transportationCompany => transportationCompany.Logo.FileName)
+              .Titled("Logo");
+
           columns.Add(transportationCompany => transportationCompany.FantasyName)
               .Titled("Nome Fantasia");
 
@@ -50,8 +53,8 @@
       .Empty("Nenhuma companhia encontrada.")
       .Pageable(pager =>
       {
-          pager.RowsPerPage = Model.RowsRowsPerPage;
+          pager.RowsPerPage = Model.PerPage;
           pager.TotalRows = Model.Total;
       })
       .Sortable()
-)
+      )
