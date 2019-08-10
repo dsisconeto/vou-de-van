@@ -87,6 +87,12 @@
     <script src="~/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 
     @RenderSection("Scripts", required: false)
+    
+    <script>
+        [].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
+            new MvcGrid(element);
+        });
+    </script>
 
 </body>
 </html>
