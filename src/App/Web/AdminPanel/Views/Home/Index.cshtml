@@ -2,6 +2,11 @@
     ViewData["Title"] = "Dashboard";
 }
 
+<link href="~/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+<link href="~/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+<link href="~/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+<link href="~/css/pages/dashboard4.css" rel="stylesheet">
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-3">
@@ -57,9 +62,6 @@
             </div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Sales overview chart -->
-    <!-- ============================================================== -->
     <div class="row">
         <div class="col-lg-6 col-md-12">
             <div class="card">
@@ -452,3 +454,19 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!--sparkline JavaScript -->
+    <script src="~/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--morris JavaScript -->
+    <script src="~/plugins/chartist-js/dist/chartist.min.js"></script>
+    <script src="~/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <!-- Chart JS -->
+    <script src="~/js/dashboard4.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="~/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+}

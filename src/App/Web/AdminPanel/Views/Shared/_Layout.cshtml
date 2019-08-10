@@ -10,27 +10,13 @@
 
     <title>@ViewData["Title"] | VouDeVan - Painel Admin</title>
 
-    <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon.png">
-    <!-- Bootstrap Core CSS -->
     <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-    <!-- MVC Grid -->
+    @*<link href="~/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">*@
     <link rel="stylesheet" href="~/css/mvc-grid/mvc-grid.css" />
-    <!-- This page CSS -->
-    <!-- Vector CSS -->
-    <link href="~/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
-    <!-- chartist CSS -->
-    <link href="~/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
-    <link href="~/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link href="~/css/style.css" rel="stylesheet">
-    <!-- Dashboard 1 Page CSS -->
-    <link href="~/css/pages/dashboard4.css" rel="stylesheet">
-    <!-- You can change the theme colors from here -->
     <link href="~/css/colors/default-dark.css" id="theme" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -45,9 +31,12 @@
         </div>
     </div>
     <div id="main-wrapper">
+        @await Component.InvokeAsync("NToastNotify")
         <partial name="Navigation/_TopNavbar" />
         <partial name="Navigation/_LateralMenu" />
+
         @*TODO: criar partial automatizada de breadcrumb*@
+
         <div class="page-wrapper">
             @RenderBody()
             <footer class="footer"> &copy; @DateTime.Now.Year - VouDeVan</footer>
@@ -55,36 +44,16 @@
     </div>
 
     <script src="~/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap popper Core JavaScript -->   
     <script src="~/plugins/bootstrap/js/popper.min.js"></script>
     <script src="~/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
     <script src="~/js/perfect-scrollbar.jquery.min.js"></script>
-    <!--Wave Effects -->
+    @*<script src="~/js/plugins/toast-master/js/jquery.toast.js"></script>*@
     <script src="~/js/waves.js"></script>
-    <!--Menu sidebar -->
     <script src="~/js/sidebarmenu.js"></script>
-    <!--MVC Grid -->
     <script src="~/plugins/mvc-grid/mvc-grid.js" type="text/javascript"></script>
-    <!--Custom JavaScript -->
+    <script src="~/plugins/jquery-mask/dist/jquery.mask.min.js"></script>
+    <script src="~/js/mask.init.js"></script>
     <script src="~/js/custom.js"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <!-- Vector map JavaScript -->
-    <script src="~/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="~/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <!--sparkline JavaScript -->
-    <script src="~/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <!--morris JavaScript -->
-    <script src="~/plugins/chartist-js/dist/chartist.min.js"></script>
-    <script src="~/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
-    <!-- Chart JS -->
-    <script src="~/js/dashboard4.js"></script>
-    <!-- ============================================================== -->
-    <!-- Style switcher -->
-    <!-- ============================================================== -->
-    <script src="~/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 
     @RenderSection("Scripts", required: false)
 

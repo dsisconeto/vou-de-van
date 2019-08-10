@@ -11,10 +11,12 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
+    <PackageReference Include="ImageProcessor" Version="2.7.0.100" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="NonFactors.Grid.Mvc6" Version="5.0.0" />
+    <PackageReference Include="NToastNotify" Version="5.0.12" />
   </ItemGroup>
 
 

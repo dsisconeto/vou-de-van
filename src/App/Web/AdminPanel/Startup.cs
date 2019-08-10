@@ -11,6 +11,8 @@ using NonFactors.Mvc.Grid;
 using VouDeVan.App.Web.AdminPainel.Filters;
 using VouDeVan.App.Web.AdminPainel.Support;
 using VouDeVan.Core.Business;
+using NToastNotify;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace VouDeVan.App.Web.AdminPainel
 {
@@ -35,6 +37,17 @@ namespace VouDeVan.App.Web.AdminPainel
 
                 return new StorageFile(rootPath);
             });
+
+            services.AddMvc().AddNToastNotifyToastr(new ToastrOptions(){
+                ProgressBar = false,
+                PositionClass = ToastPositions.TopRight
+            });
+
+             services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            services.AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
 
             services.AddMvcGrid(filters =>
             {
@@ -71,6 +84,7 @@ namespace VouDeVan.App.Web.AdminPainel
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseNToastNotify();
 
             app.UseMvc(routes =>
             {
