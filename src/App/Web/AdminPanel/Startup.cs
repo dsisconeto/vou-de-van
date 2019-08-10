@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,7 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NonFactors.Mvc.Grid;
 using VouDeVan.App.Web.AdminPainel.Filters;
+using VouDeVan.App.Web.AdminPainel.Support;
 using VouDeVan.Core.Business;
+
 namespace VouDeVan.App.Web.AdminPainel
 {
     public class Startup
@@ -23,6 +26,16 @@ namespace VouDeVan.App.Web.AdminPainel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDatabase(Configuration.GetConnectionString("DefaultConnection"));
+
+            services.AddTransient<AbstractStorageFile>(provider =>
+            {
+                var rootPath = provider.GetService<IHostingEnvironment>().WebRootPath;
+
+                Path.Combine(rootPath, "storage");
+
+                return new StorageFile(rootPath);
+            });
+
             services.AddMvcGrid(filters =>
             {
                 filters.BooleanTrueOptionText = () => "True";
@@ -38,7 +51,7 @@ namespace VouDeVan.App.Web.AdminPainel
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

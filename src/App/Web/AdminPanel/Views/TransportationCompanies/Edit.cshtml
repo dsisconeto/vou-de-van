@@ -1,4 +1,4 @@
-﻿@model VouDeVan.App.Web.AdminPainel.Models.TransportationCompany.TransportationCompanyViewModel
+﻿@model VouDeVan.App.Web.AdminPainel.TransportationCompanies.TransportationCompanyViewModel
 
 @{
     ViewData["Title"] = $"Editar Empresa de Transporte - {Model.FantasyName}";
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form asp-action="Edit" asp-route-id="@Model.Id" method="post" asp-antiforgery="true">
+                <form asp-action="Edit" asp-route-id="@Model.Id" method="post" asp-antiforgery="true" enctype="multipart/form-data">
                     <partial name="Fields" model="@Model" />
                     <div class="form-row">
                         <div class="col-md-12">

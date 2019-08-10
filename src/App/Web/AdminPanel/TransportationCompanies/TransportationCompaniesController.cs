@@ -1,28 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using VouDeVan.App.Web.AdminPainel.Models;
-using VouDeVan.App.Web.AdminPainel.Models.TransportationCompany;
+using VouDeVan.App.Web.AdminPainel.Controllers;
+using VouDeVan.App.Web.AdminPainel.Support;
 using VouDeVan.Core.Business.Domains.TransportationCompanies;
-using VouDeVan.Core.Business.Support;
 
-namespace VouDeVan.App.Web.AdminPainel.Controllers
+namespace VouDeVan.App.Web.AdminPainel.TransportationCompanies
 {
     public class TransportationCompaniesController : BaseController
     {
         private readonly TransportationCompanyServices _transportationCompanyServices;
         private readonly IMapper _mapper;
+        private readonly AbstractStorageFile _storageFile;
 
         public TransportationCompaniesController(TransportationCompanyServices transportationCompanyServices,
-            IMapper mapper)
+            IMapper mapper, AbstractStorageFile storageFile)
         {
             _transportationCompanyServices = transportationCompanyServices;
             _mapper = mapper;
+            _storageFile = storageFile;
         }
 
         public IActionResult Index()
@@ -30,9 +29,10 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
             return View();
         }
 
-        public async Task<PartialViewResult> IndexGrid([FromQueryAttribute] int page = 1)
+        public async Task<PartialViewResult> IndexGrid([FromQuery] int page = 1)
         {
             var transportationCompanies = await _transportationCompanyServices.FindAllToGrid(page);
+
 
             return PartialView(transportationCompanies);
         }
@@ -53,7 +53,17 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
                 return View(transportationCompanyViewModel);
             }
 
+
+            // TODO gamiarra aqui
+            if (transportationCompanyViewModel.LogoSizeIsValid == false)
+            {
+                return View(transportationCompanyViewModel);
+            }
+
+            // TODO apagar se der erro tem que apagar  a imagem
+
             var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
+            transportationCompany.Logo = await _storageFile.Store<Logo>(transportationCompanyViewModel.Logo);
 
             await _transportationCompanyServices.Create(transportationCompany);
 

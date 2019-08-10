@@ -14,3 +14,10 @@ Dentro do projeto Database
 ```
 
 
+### Rollback novas migrações
+
+```shell
+  dotnet ef --startup-project ..\..\App\Web\AdminPanel  migrations remove
+```
+
+

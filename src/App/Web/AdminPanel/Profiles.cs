@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using VouDeVan.App.Web.AdminPainel.Models.TransportationCompany;
+using VouDeVan.App.Web.AdminPainel.Controllers;
+using VouDeVan.App.Web.AdminPainel.TransportationCompanies;
 using VouDeVan.Core.Business.Domains.TransportationCompanies;
 
 namespace VouDeVan.App.Web.AdminPainel
@@ -14,7 +15,8 @@ namespace VouDeVan.App.Web.AdminPainel
         public Profiles()
         {
             CreateMap<TransportationCompany, TransportationCompanyViewModel>();
-            CreateMap<TransportationCompanyViewModel, TransportationCompany>();
+            CreateMap<TransportationCompanyViewModel, TransportationCompany>()
+                .ForMember(dest => dest.Logo, opt => opt.Ignore());
         }
     }
 }
