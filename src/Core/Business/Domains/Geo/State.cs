@@ -10,5 +10,8 @@ namespace VouDeVan.Core.Business.Domains.Geo
     {
         [Required, MaxLength(50)]
         public string Name { get; set; }
+
+        [Required, MaxLength(2)]
+        public string Initials { get; set; }
     }
 }

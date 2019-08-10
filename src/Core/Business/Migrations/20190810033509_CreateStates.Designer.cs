@@ -10,8 +10,8 @@ using VouDeVan.Core.Business;
 namespace VouDeVan.Core.Business.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20190808030419_CreateStopoverPointsTable")]
-    partial class CreateStopoverPointsTable
+    [Migration("20190810033509_CreateStates")]
+    partial class CreateStates
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,28 @@ namespace VouDeVan.Core.Business.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("VouDeVan.Core.Business.Domains.Geo.State", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("Initials")
+                        .IsRequired()
+                        .HasMaxLength(2);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("UpdateAt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("States");
+                });
 
             modelBuilder.Entity("VouDeVan.Core.Business.Domains.TransportationCompanies.TransportationCompany", b =>
                 {

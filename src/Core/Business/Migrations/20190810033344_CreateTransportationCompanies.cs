@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VouDeVan.Core.Business.Migrations
 {
-    public partial class CreateTransportationCompaniesTable : Migration
+    public partial class CreateTransportationCompanies : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

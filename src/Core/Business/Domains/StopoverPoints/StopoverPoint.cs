@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 using VouDeVan.Core.Business.Domains.Geo;
 using VouDeVan.Core.Business.Support;
 
@@ -14,9 +13,11 @@ namespace VouDeVan.Core.Business.Domains.StopoverPoints
         public string Name { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal(10,8)")]
         public decimal Latitude { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal(11,8)")]
         public decimal Longitude { get; set; }
 
         [Required]

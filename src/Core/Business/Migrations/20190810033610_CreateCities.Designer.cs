@@ -10,8 +10,8 @@ using VouDeVan.Core.Business;
 namespace VouDeVan.Core.Business.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20190807010410_CreateTransportationCompaniesTable")]
-    partial class CreateTransportationCompaniesTable
+    [Migration("20190810033610_CreateCities")]
+    partial class CreateCities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,50 @@ namespace VouDeVan.Core.Business.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("VouDeVan.Core.Business.Domains.Geo.City", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<Guid>("StateId");
+
+                    b.Property<DateTime>("UpdateAt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("VouDeVan.Core.Business.Domains.Geo.State", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("Initials")
+                        .IsRequired()
+                        .HasMaxLength(2);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("UpdateAt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("States");
+                });
 
             modelBuilder.Entity("VouDeVan.Core.Business.Domains.TransportationCompanies.TransportationCompany", b =>
                 {
@@ -64,6 +108,14 @@ namespace VouDeVan.Core.Business.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TransportationCompanies");
+                });
+
+            modelBuilder.Entity("VouDeVan.Core.Business.Domains.Geo.City", b =>
+                {
+                    b.HasOne("VouDeVan.Core.Business.Domains.Geo.State", "State")
+                        .WithMany()
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
