@@ -4,6 +4,8 @@
     ViewData["Title"] = "Cadastrar Ponto de Parada";
 }
 
+<link rel="stylesheet" href="~/plugins/select2/dist/css/select2.min.css" />
+
 <div class="container-fluid">
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
@@ -35,3 +37,35 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+
+    <script src="~/plugins/select2/dist/js/select2.full.min.js"></script>
+    <script src="~/plugins/select2/dist/js/i18n/pt-BR.js"></script>
+
+    <script>
+        $('#CityId').select2({
+            placeholder: "Buscar por cidade ou estado",
+            minimumInputLength: 2,
+            ajax: {
+                url: '@Url.Action("GetCitiesSelect2", "StopoverPoints")',
+                dataType: 'json',
+                type: "GET",
+                quietMillis: 100,
+                data: function (term, page) {
+                    return {
+                        q: term, //search term
+                        page_limit: 10, // page size
+                        page: page
+                    };
+                },
+                results: function (data, page) {
+                    var more = (page * 10) < data.total;
+                    return {results: data.results, more: more};
+                }
+            },
+            escapeMarkup: function (m) { return m; }
+        });
+    </script>
+
+}

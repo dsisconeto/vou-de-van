@@ -25,7 +25,7 @@ namespace VouDeVan.App.Web.AdminPainel.Models.StopoverPoints
         [Required]
         public Guid CityId { get; set; }
 
-        public City City { get; set; }
+        public List<SelectListItem> Cities { get; set; }
 
 
         [Required]

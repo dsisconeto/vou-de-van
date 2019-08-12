@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using VouDeVan.Core.Business.Domains.Geo;
 using VouDeVan.Core.Business.Domains.StopoverPoints;
 using VouDeVan.Core.Business.Domains.TransportationCompanies;
 
@@ -12,6 +13,7 @@ namespace VouDeVan.Core.Business
             services.AddDbContext<DataBaseContext>(options => { options.UseSqlServer(connectionString); });
             services.AddScoped<TransportationCompanyServices>();
             services.AddScoped<StopoverPointServices>();
+            services.AddScoped<CityServices>();
         }
     }
 }
