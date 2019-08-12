@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using VouDeVan.Core.Business.Support;
+using VouDeVan.Core.Support;
+using VouDeVan.Core.Support.TransportationCompanies;
+
 
 namespace VouDeVan.Core.Business.Domains.TransportationCompanies
 {
     public class TransportationCompanyServices
     {
         private readonly DataBaseContext _dataBaseContext;
+        private readonly IMapper _mapper;
 
-        public TransportationCompanyServices(DataBaseContext dataBaseContext)
+        public TransportationCompanyServices(DataBaseContext dataBaseContext, IMapper mapper)
         {
             _dataBaseContext = dataBaseContext;
+            _mapper = mapper;
         }
 
         public async Task<TransportationCompany> Create(TransportationCompany transportationCompany)
@@ -52,15 +58,15 @@ namespace VouDeVan.Core.Business.Domains.TransportationCompanies
         {
             // TODO verificar relações quando tiver.
 
-             var transportationCompany  = await FindById(id);
+            var transportationCompany = await FindById(id);
 
 
-             if (transportationCompany == null)
-             {
-                 throw  new BusinessException("Empresa de transporte não encontrada");
-             }
+            if (transportationCompany == null)
+            {
+                throw new BusinessException("Empresa de transporte não encontrada");
+            }
 
-             _dataBaseContext.TransportationCompanies.Remove(transportationCompany);
+            _dataBaseContext.TransportationCompanies.Remove(transportationCompany);
 
             await _dataBaseContext.SaveChangesAsync();
         }
@@ -72,17 +78,29 @@ namespace VouDeVan.Core.Business.Domains.TransportationCompanies
 
         public async Task<Paginate<TransportationCompany>> FindAllToGrid(int page, int rowsPerPage = 10)
         {
-            var skip = (page - 1) * rowsPerPage;
-
             var query = _dataBaseContext.TransportationCompanies.OrderByDescending(tc => tc.CreatedAt);
 
-            var total = query.Count();
-            var transportationCompanies = await query.Skip(skip)
-                .Take(rowsPerPage)
-                .ToListAsync();
 
-            return new Paginate<TransportationCompany>(transportationCompanies, total, rowsPerPage);
+            return await query.ToPaginate(page, rowsPerPage);
         }
+
+
+        public async Task<Paginate<TransportationCompany>> FindByGetQuery(TransportationCompaniesGetQuery getQuery)
+        {
+            var query = _dataBaseContext.TransportationCompanies.Where(transportationCompany =>
+                transportationCompany.Status == Status.Active);
+
+            // TODO quando tiver a lista de cidades que a empresa estive associdas as empresas incluir nessa query
+
+            if (string.IsNullOrWhiteSpace(getQuery.FantasyName) == false)
+            {
+                query = query.Where(company => company.FantasyName.Contains(getQuery.FantasyName));
+            }
+
+
+            return await query.ToPaginate(getQuery.Page, getQuery.PerPage);
+        }
+
 
         public bool HasCompanySameCpnj(string cnpj, Guid? id = null)
         {

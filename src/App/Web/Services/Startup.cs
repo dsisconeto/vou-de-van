@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +21,8 @@ namespace VouDeVan.App.Web.Services
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataBaseContext>(options => options.UseSqlServer((Configuration.GetConnectionString("DefaultConnection"))));
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddDatabase(Configuration.GetConnectionString("DefaultConnection"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
