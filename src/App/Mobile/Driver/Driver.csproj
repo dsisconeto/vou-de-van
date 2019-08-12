@@ -6,7 +6,6 @@
     <RootNamespace>VouDeVan.App.Mobile.Driver</RootNamespace>
     <AssemblyName>VouDeVan.App.Mobile.Driver</AssemblyName>
  </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>pdbonly</DebugType>
     <DebugSymbols>true</DebugSymbols>

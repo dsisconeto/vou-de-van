@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 using VouDeVan.App.Web.AdminPainel.Controllers;
 using VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies;
-using VouDeVan.App.Web.AdminPainel.Support;
+using VouDeVan.App.Web.AdminPainel.Support.Storage;
 using VouDeVan.Core.Business.Domains.TransportationCompanies;
 
 namespace AdminPainel.Controllers
@@ -18,14 +18,15 @@ namespace AdminPainel.Controllers
 
         private readonly TransportationCompanyServices _transportationCompanyServices;
         private readonly IMapper _mapper;
-        private readonly AbstractStorageFile _storageFile;
+        private readonly IStorage _storage;
 
         public TransportationCompaniesController(TransportationCompanyServices transportationCompanyServices,
-            IMapper mapper, AbstractStorageFile storageFile, IToastNotification toastNotification)
+            IMapper mapper, IStorage storage, IToastNotification toastNotification)
         {
             _transportationCompanyServices = transportationCompanyServices;
             _mapper = mapper;
-            _storageFile = storageFile;
+            _storage = storage;
+
             _toastNotification = toastNotification;
         }
         
@@ -68,7 +69,7 @@ namespace AdminPainel.Controllers
                 // TODO apagar se der erro tem que apagar  a imagem
 
                 var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
-                transportationCompany.Logo = await _storageFile.Store<Logo>(transportationCompanyViewModel.Logo);
+                transportationCompany.Logo = await _storage.Store<Logo>(transportationCompanyViewModel.Logo);
 
                 await _transportationCompanyServices.Create(transportationCompany);
 

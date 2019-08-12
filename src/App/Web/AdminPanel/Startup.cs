@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NonFactors.Mvc.Grid;
 using VouDeVan.App.Web.AdminPainel.Filters;
-using VouDeVan.App.Web.AdminPainel.Support;
+using VouDeVan.App.Web.AdminPainel.Support.Storage;
 using VouDeVan.Core.Business;
 using NToastNotify;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -29,11 +31,11 @@ namespace VouDeVan.App.Web.AdminPainel
         {
             services.AddDatabase(Configuration.GetConnectionString("DefaultConnection"));
 
-            services.AddTransient<AbstractStorageFile>(provider =>
+            services.AddTransient<IStorage>(provider =>
             {
                 var rootPath = provider.GetService<IHostingEnvironment>().WebRootPath;
 
-                Path.Combine(rootPath, "storage");
+                rootPath =  Path.Combine(rootPath, "storage");
 
                 return new StorageFile(rootPath);
             });
@@ -42,6 +44,8 @@ namespace VouDeVan.App.Web.AdminPainel
                 ProgressBar = false,
                 PositionClass = ToastPositions.TopRight
             });
+
+
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
@@ -80,6 +84,16 @@ namespace VouDeVan.App.Web.AdminPainel
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            // Definindo a cultura padrão: pt-BR
+            var supportedCultures = new[] { new CultureInfo("pt-BR") };
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(culture: "pt-BR", uiCulture: "pt-BR"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
+
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

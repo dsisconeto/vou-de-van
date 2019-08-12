@@ -2,7 +2,7 @@
 @using VouDeVan.Core.Business.Domains.TransportationCompanies
 @using VouDeVan.Core.Business.Support
 
-@model Paginate<TransportationCompany>
+@model VouDeVan.Core.Support.Paginate<TransportationCompany>
 
 @{
 
@@ -40,10 +40,6 @@
 
           columns.Add(transportationCompany => transportationCompany.RepresentativeName)
               .Titled("Representante");
-
-
-          columns.Add(transportationCompany => transportationCompany.RepresentativePhone)
-              .Titled("Telefone do Representante");
 
 
           columns.Add(transportationCompany => transportationCompany.Id)

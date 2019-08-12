@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>VouDeVan.App.Mobile.Driver.GatewayApi</RootNamespace>
+    <AssemblyName>VouDeVan.App.Mobile.Driver.GatewayApi</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Core\Support\Support.csproj" />
+  </ItemGroup>
+
+</Project>
