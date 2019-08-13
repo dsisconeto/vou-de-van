@@ -15,6 +15,9 @@ using VouDeVan.App.Web.AdminPainel.Support.Storage;
 using VouDeVan.Core.Business;
 using NToastNotify;
 using Microsoft.AspNetCore.Mvc.Razor;
+using System.Dynamic;
+using Microsoft.AspNetCore.Diagnostics;
+using Newtonsoft.Json;
 
 namespace VouDeVan.App.Web.AdminPainel
 {
@@ -26,7 +29,7 @@ namespace VouDeVan.App.Web.AdminPainel
         }
 
         public IConfiguration Configuration { get; }
-
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDatabase(Configuration.GetConnectionString("DefaultConnection"));
@@ -35,17 +38,17 @@ namespace VouDeVan.App.Web.AdminPainel
             {
                 var rootPath = provider.GetService<IHostingEnvironment>().WebRootPath;
 
-                rootPath =  Path.Combine(rootPath, "storage");
+                rootPath = Path.Combine(rootPath, "storage");
 
                 return new StorageFile(rootPath);
             });
+
+            services.AddTransient(typeof(IToastNotification), typeof(ToastrNotification));
 
             services.AddMvc().AddNToastNotifyToastr(new ToastrOptions(){
                 ProgressBar = false,
                 PositionClass = ToastPositions.TopRight
             });
-
-
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
@@ -68,7 +71,6 @@ namespace VouDeVan.App.Web.AdminPainel
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -76,16 +78,35 @@ namespace VouDeVan.App.Web.AdminPainel
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
+
+                app.UseExceptionHandler((error) =>
+                {
+                    error.Run(async context => {
+ 
+                        context.Response.StatusCode = context.Response.StatusCode;
+                        context.Response.ContentType = "application/json";
+ 
+                        string errorMessage = context.Features.Get<IExceptionHandlerPathFeature>().Error.GetBaseException().Message;
+
+                        dynamic errorComponent = new ExpandoObject();
+                        errorComponent.ErrorCode = context.Response.StatusCode;
+                        errorComponent.ErrorMessage = errorMessage;
+                        
+                        string responseMessage = JsonConvert.SerializeObject(errorMessage);
+                       
+                        //toastNotification.AddErrorToastMessage(responseMessage, new ToastrOptions() { Title = "Erro" });
+
+                        await context.Response.WriteAsync(responseMessage);
+                    });
+                });
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
-            // Definindo a cultura padrão: pt-BR
             var supportedCultures = new[] { new CultureInfo("pt-BR") };
             app.UseRequestLocalization(new RequestLocalizationOptions
             {

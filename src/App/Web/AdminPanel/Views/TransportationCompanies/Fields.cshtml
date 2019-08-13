@@ -1,32 +1,27 @@
 ﻿@model VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies.TransportationCompanyViewModel
-@{
 
-    ViewData["Title"] = "View";
-}
-
-<div asp-validation-summary="ModelOnly"></div>
 <input asp-for="Id" hidden />
 
 <div class="form-row">
     <div class="col-md-5">
-        <div class="position-relative form-group">
-            <label asp-for="SocialName">Razão Social*</label>
+        <label asp-for="SocialName">Razão Social*</label>
+        <div class="form-group">
             <input asp-for="SocialName" class="form-control">
             <span asp-validation-for="SocialName" class="text-danger"></span>
         </div>
     </div>
 
     <div class="col-md-5">
-        <div class="position-relative form-group">
-            <label asp-for="FantasyName">Nome Fantasia*</label>
+        <label asp-for="FantasyName">Nome Fantasia*</label>
+        <div class="form-group">
             <input asp-for="FantasyName" class="form-control">
             <span asp-validation-for="FantasyName" class="text-danger"></span>
         </div>
     </div>
 
     <div class="col-md-2">
-        <div class="position-relative form-group">
-            <label asp-for="CNPJ">CNPJ*</label>
+        <label asp-for="CNPJ">CNPJ*</label>
+        <div class="form-group">
             <input asp-for="CNPJ" class="form-control cnpj">
             <span asp-validation-for="CNPJ" class="text-danger"></span>
         </div>
@@ -35,16 +30,16 @@
 
 <div class="form-row">
     <div class="col-md-8">
-        <div class="position-relative form-group">
-            <label asp-for="Address">Endereço*</label>
+        <label asp-for="Address">Endereço*</label>
+        <div class="form-group">
             <input asp-for="Address" class="form-control">
             <span asp-validation-for="Address" class="text-danger"></span>
         </div>
     </div>
 
     <div class="col-md-4">
-        <div class="position-relative form-group">
-            <label asp-for="Logo">Logo*</label>
+        <label asp-for="Logo">Logo*</label>
+        <div class="form-group">
             <input asp-for="Logo" class="form-control">
             <span asp-validation-for="Logo" class="text-danger"></span>
         </div>
@@ -57,21 +52,21 @@
 
 <div class="form-row">
     <div class="col-md-6">
-        <div class="position-relative form-group">
+        <div class="form-group">
             <label asp-for="RepresentativeName">Nome do Representante*</label>
             <input asp-for="RepresentativeName" class="form-control">
             <span asp-validation-for="RepresentativeName" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-3">
-        <div class="position-relative form-group">
+        <div class="form-group">
             <label asp-for="RepresentativePhone">Telefone do Representante*</label>
             <input asp-for="RepresentativePhone" class="form-control phone">
             <span asp-validation-for="RepresentativePhone" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-3">
-        <div class="position-relative form-group">
+        <div class="form-group">
             <label asp-for="Status">Status*</label>
             <select asp-for="Status" asp-items="Model.Statuses" class="form-control"></select>
             <span asp-validation-for="Status" class="text-danger"></span>
@@ -81,7 +76,7 @@
 
 <div class="form-row">
     <div class="col-md-12">
-        <div class="position-relative form-group">
+        <div class="form-group">
             <label asp-for="Observation">Observações</label>
             <textarea asp-for="Observation" class="form-control" rows="10"></textarea>
             <span asp-validation-for="Observation" class="text-danger"></span>
