@@ -13,7 +13,7 @@ namespace VouDeVan.Core.Business.Migrations
     [Migration("20190811032936_CreateInitialMigrations")]
     partial class CreateInitialMigrations
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

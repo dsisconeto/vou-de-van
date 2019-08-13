@@ -22,6 +22,8 @@ namespace VouDeVan.Core.Business.Support
                 .Skip(paginate.Skip)
                 .Take(paginate.PerPage)
                 .ToListAsync();
+
+            return paginate;
         }
     }
 }

@@ -40,7 +40,7 @@
 
 @section Scripts {
 
-    <script src="~/plugins/select2/dist/js/select2.full.min.js"></script>
+    <script src="~/plugins/select2/dist/js/select2.min.js"></script>
     <script src="~/plugins/select2/dist/js/i18n/pt-BR.js"></script>
 
     <script>
@@ -53,15 +53,24 @@
                 type: "GET",
                 quietMillis: 100,
                 data: function (term, page) {
+                    console.log(term.term);
                     return {
-                        q: term, //search term
+                        q: term.term, //search term
                         page_limit: 10, // page size
                         page: page
                     };
                 },
-                results: function (data, page) {
-                    var more = (page * 10) < data.total;
-                    return {results: data.results, more: more};
+                processResults: function (data) {
+                    var myResults = [];
+                    $.each(data, function (index, item) {
+                        myResults.push({
+                            'id': item.value,
+                            'text': item.text
+                        });
+                    });
+                    return {
+                        results: myResults
+                    };
                 }
             },
             escapeMarkup: function (m) { return m; }

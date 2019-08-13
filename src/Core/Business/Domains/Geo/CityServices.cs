@@ -15,18 +15,13 @@ namespace VouDeVan.Core.Business.Domains.Geo
             _dataBaseContext = dataBaseContext;
         }
 
-        public List<City> FindAll(int page, string term = "", int rowsPerPage = 10)
+        public List<City> FindAll(string term = "")
         {
-            var skip = (page - 1) * rowsPerPage;
-
             var query = _dataBaseContext.Cities
                 .Include(c => c.State)
                 .Where(c => c.Name.Contains(term) || c.State.Initials.Contains(term));
 
-            var total = query.Count();
-
-            var cities = query.Skip(skip)
-                .Take(rowsPerPage)
+            var cities = query
                 .OrderByDescending(tc => tc.CreatedAt)
                 .ToList();
 

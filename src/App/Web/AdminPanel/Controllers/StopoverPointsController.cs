@@ -61,9 +61,10 @@ namespace AdminPanel.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetCitiesSelect2(string term)
+        public JsonResult GetCitiesSelect2()
         {
-            var lista = _cityServices.FindAll(1).Select(city => new { Value = city.Id.ToString(), Text = $"{city.Name} - {city.State.Initials}" });
+            var term = HttpContext.Request.Query["q"];
+            var lista = _cityServices.FindAll(term).Select(city => new { Value = city.Id.ToString(), Text = $"{city.Name} - {city.State.Initials}" });
 
             return Json(lista);
         }
