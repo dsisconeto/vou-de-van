@@ -26,7 +26,6 @@ namespace AdminPainel.Controllers
             _transportationCompanyServices = transportationCompanyServices;
             _mapper = mapper;
             _storage = storage;
-
             _toastNotification = toastNotification;
         }
         
@@ -58,32 +57,22 @@ namespace AdminPainel.Controllers
                 return View(transportationCompanyViewModel);
             }
 
-            try
+             // TODO gamiarra aqui
+            if (transportationCompanyViewModel.LogoSizeIsValid == false)
             {
-                // TODO gamiarra aqui
-                if (transportationCompanyViewModel.LogoSizeIsValid == false)
-                {
-                    return View(transportationCompanyViewModel);
-                }
-
-                // TODO apagar se der erro tem que apagar  a imagem
-
-                var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
-                transportationCompany.Logo = await _storage.Store<Logo>(transportationCompanyViewModel.Logo);
-
-                await _transportationCompanyServices.Create(transportationCompany);
-
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                _toastNotification.AddErrorToastMessage(ex?.Message);
-
-                if (ex.InnerException != null)
-                    _toastNotification.AddErrorToastMessage(ex?.InnerException.Message);
-
                 return View(transportationCompanyViewModel);
             }
+
+            // TODO apagar se der erro tem que apagar  a imagem
+
+            var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
+            transportationCompany.Logo = await _storage.Store<Logo>(transportationCompanyViewModel.Logo);
+
+            await _transportationCompanyServices.Create(transportationCompany);
+
+            _toastNotification.AddSuccessToastMessage("Companhia de Transporte cadastrada.");
+
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
