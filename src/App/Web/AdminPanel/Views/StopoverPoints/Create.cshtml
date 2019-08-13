@@ -5,6 +5,7 @@
 }
 
 <link rel="stylesheet" href="~/libs/select2/dist/css/select2.min.css" />
+<link rel="stylesheet" href="~/css/gmaps.css" />
 
 <div class="container-fluid">
     <div class="row page-titles">
@@ -40,10 +41,18 @@
 
 @section Scripts {
 
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyDGFTLrHgL81aDV3FG5QlFQwMbtnWGgISk"></script>
+    <script src="~/js/gmaps.js"></script>
+    <script src="~/js/custom-map.js"></script>
     <script src="~/libs/select2/dist/js/select2.min.js"></script>
     <script src="~/libs/select2/dist/js/i18n/pt-BR.js"></script>
 
     <script>
+
+        $(function () {
+            map.initMap();
+        });
+
         $('#CityId').select2({
             placeholder: "Buscar por cidade ou estado",
             minimumInputLength: 2,

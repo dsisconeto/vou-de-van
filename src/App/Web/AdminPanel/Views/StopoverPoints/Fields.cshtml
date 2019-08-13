@@ -8,31 +8,17 @@
 <input asp-for="Id" hidden />
 
 <div class="form-row">
-    <div class="col-md-5">
+    <div class="col-md-6">
         <div class="position-relative form-group">
             <label asp-for="Name">Nome*</label>
             <input asp-for="Name" class="form-control">
         </div>
     </div>
-    <div class="col-md-5">
-        <div class="position-relative form-group">
-            <label asp-for="Latitude">Latitude*</label>
-            <input asp-for="Latitude" class="form-control">
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="position-relative form-group">
-            <label asp-for="Longitude">Longitude*</label>
-            <input asp-for="Longitude" class="form-control">
-        </div>
-    </div>
-</div>
 
-<div class="form-row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="position-relative form-group">
             <label asp-for="CityId">Cidade*</label>
-            <select id="CityId" class="form-control select2" ></select>
+            <select id="CityId" class="form-control select2"></select>
         </div>
     </div>
 </div>
@@ -43,5 +29,14 @@
             <label asp-for="Status">Status*</label>
             <select asp-for="Status" asp-items="Model.Statuses" class="form-control"></select>
         </div>
+    </div>
+</div>
+
+<input type="hidden" asp-for="Latitude" class="form-control">
+<input type="hidden" asp-for="Longitude" class="form-control">
+
+<div class="container-fluid">
+    <div class="col-12" style="position: relative;">
+        <div id="map"></div>
     </div>
 </div>
