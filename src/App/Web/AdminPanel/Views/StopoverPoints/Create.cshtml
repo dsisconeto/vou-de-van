@@ -50,40 +50,42 @@
     <script>
 
         $(function () {
-            map.initMap();
+
+            $('#CityId').select2({
+                placeholder: "Buscar por cidade ou estado",
+                minimumInputLength: 2,
+                ajax: {
+                    url: '@Url.Action("GetCitiesSelect2", "StopoverPoints")',
+                    dataType: 'json',
+                    type: "GET",
+                    quietMillis: 100,
+                    data: function (term, page) {
+                        console.log(term.term);
+                        return {
+                            q: term.term, //search term
+                            page_limit: 10, // page size
+                            page: page
+                        };
+                    },
+                    processResults: function (data) {
+                        var myResults = [];
+                        $.each(data, function (index, item) {
+                            myResults.push({
+                                'id': item.value,
+                                'text': item.text
+                            });
+                        });
+                        return {
+                            results: myResults
+                        };
+                    }
+                },
+                escapeMarkup: function (m) { return m; }
+            });
+
         });
 
-        $('#CityId').select2({
-            placeholder: "Buscar por cidade ou estado",
-            minimumInputLength: 2,
-            ajax: {
-                url: '@Url.Action("GetCitiesSelect2", "StopoverPoints")',
-                dataType: 'json',
-                type: "GET",
-                quietMillis: 100,
-                data: function (term, page) {
-                    console.log(term.term);
-                    return {
-                        q: term.term, //search term
-                        page_limit: 10, // page size
-                        page: page
-                    };
-                },
-                processResults: function (data) {
-                    var myResults = [];
-                    $.each(data, function (index, item) {
-                        myResults.push({
-                            'id': item.value,
-                            'text': item.text
-                        });
-                    });
-                    return {
-                        results: myResults
-                    };
-                }
-            },
-            escapeMarkup: function (m) { return m; }
-        });
+        
     </script>
 
 }

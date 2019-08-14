@@ -25,12 +25,9 @@ namespace VouDeVan.App.Web.AdminPainel.Models.StopoverPoints
         [Required]
         public Guid CityId { get; set; }
 
-        public List<SelectListItem> Cities { get; set; }
-
 
         [Required]
-        [MaxLength(40)]
-        public Status Status { get; set; }
+        public Status Status { get; set; } = Status.Active;
 
         public List<SelectListItem> Statuses { get; } = new List<SelectListItem>
         {

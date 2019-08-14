@@ -8,22 +8,26 @@ using VouDeVan.Core.Business.Domains.Geo;
 using VouDeVan.Core.Business.Domains.StopoverPoints;
 using System.Linq;
 using System.Collections;
+using NToastNotify;
 
 namespace AdminPanel.Controllers
 {
     public class StopoverPointsController : BaseController
     {
+        private readonly IToastNotification _toastNotification;
+
         private readonly StopoverPointServices _stopoverPointsServices;
         private readonly CityServices _cityServices;
         private readonly IMapper _mapper;
 
         public StopoverPointsController(StopoverPointServices stopoverPointServices,
             CityServices cityServices,
-            IMapper mapper)
+            IMapper mapper, IToastNotification toastNotification)
         {
             _stopoverPointsServices = stopoverPointServices;
             _cityServices = cityServices;
             _mapper = mapper;
+            _toastNotification = toastNotification;
         }
         public IActionResult Index()
         {
@@ -56,6 +60,8 @@ namespace AdminPanel.Controllers
             var stopoverPoint = _mapper.Map<StopoverPoint>(stopoverPointsViewModel);
 
             await _stopoverPointsServices.Create(stopoverPoint);
+
+            _toastNotification.AddSuccessToastMessage("Ponto de Parada cadastrado.");
 
             return RedirectToAction("Index");
         }

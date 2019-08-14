@@ -1,51 +1,64 @@
 ﻿const map = {
     marker: null,
-    latitude: $('#Latitude'),
-    longitude: $('#Longitude'),
+    latitude: null,
+    longitude: null,
     map: null,
 
+    initCoordinates: function () {
+        this.latitude = $('#Latitude');
+        this.longitude = $('#Longitude');
+    },
+
     initMap: function () {
+        let self = this;
+        this.initCoordinates();
         this.map = new GMaps({
             el: '#map',
-            lat: (!this.latitude.val()) ? this.latitude.val() : -10.181472,
-            lng: (!this.longitude.val()) ? this.longitude.val() : -48.337768,
+            lat: (!self.latitude.val()) ? self.latitude.val() : -10.181472,
+            lng: (!self.longitude.val()) ? self.longitude.val() : -48.337768,
             click: function (e) {
-                console.log(this.marker);
-                if (this.marker) {
+                console.log(self.marker);
+                if (self.marker) {
                     return;
                 }
-                this.latitude.val(e.latLng.lat());
-                this.longitude.val(e.latLng.lng());
-                this.addMarker(e.latLng.lat(), e.latLng.lng());
+                self.latitude.val(e.latLng.lat());
+                self.longitude.val(e.latLng.lng());
+                self.addMarker(e.latLng.lat(), e.latLng.lng());
             },
         });
 
-        if (this.latitude.val() !== '' || this.longitude.val() !== '') {
-            this.addMarker(this.latitude.val(), this.longitude.val());
-        }
+        //if (this.latitude.val() !== '' || this.longitude.val() !== '') {
+        //    this.addMarker(this.latitude.val(), this.longitude.val());
+        //}
     },
 
-    addMarker: function () {
+    addMarker: function (lat, long) {
+        let self = this;
+        let name = $('#Name').val();
         this.marker = this.map.addMarker({
-            lat: this.latitude,
-            lng: this.longitude,
+            lat: lat,
+            lng: long,
             title: "Ponto de Parada",
             infoWindow: {
-                content: '<p>' + '' + '</p>'
+                content: '<p>' + name + '</p>'
             },
             dblclick: function (m) {
-                this.map.removeMarker(this.marker);
+                self.map.removeMarker(self.marker);
                 // caso remova o marcador, limpar os valores das coordenadas
-                this.latitude.val('');
-                this.longitude.val('');
-                this.marker = null;
+                self.latitude.val('');
+                self.longitude.val('');
+                self.marker = null;
             },
             draggable: true,
             dragend: function (m) {
                 // Atualiza os valores das coordenadas caso o marcador seja arrastado no mapa
-                this.latitude.val(m.latLng.lat());
-                this.longitude.val(m.latLng.lng());
+                self.latitude.val(m.latLng.lat());
+                self.longitude.val(m.latLng.lng());
             }
         });
     }
 }
+
+$(function () {
+    map.initMap();
+});
