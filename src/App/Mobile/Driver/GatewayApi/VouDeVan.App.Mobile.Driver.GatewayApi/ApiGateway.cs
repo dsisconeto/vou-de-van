@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using Flurl;
-using Newtonsoft.Json;
 
 namespace VouDeVan.App.Mobile.Driver.GatewayApi
 {
@@ -25,7 +20,7 @@ namespace VouDeVan.App.Mobile.Driver.GatewayApi
         {
             if (query != null)
             {
-                uri = uri.SetQueryParams(query);
+                //uri = uri.SetQueryParams(query);
             }
             return await _httpClient.GetAsync(uri);
         }

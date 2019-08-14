@@ -10,10 +10,10 @@ using VouDeVan.Core.Business;
 namespace VouDeVan.Core.Business.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20190811032936_CreateInitialMigrations")]
-    partial class CreateInitialMigrations
+    [Migration("20190814000309_CreateTransportationCompanies")]
+    partial class CreateTransportationCompanies
     {
-        protected void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,37 +63,6 @@ namespace VouDeVan.Core.Business.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("States");
-                });
-
-            modelBuilder.Entity("VouDeVan.Core.Business.Domains.StopoverPoints.StopoverPoint", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("CityId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<decimal>("Latitude")
-                        .HasColumnType("decimal(10,8)");
-
-                    b.Property<decimal>("Longitude")
-                        .HasColumnType("decimal(11,8)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.Property<int>("Status")
-                        .HasMaxLength(40);
-
-                    b.Property<DateTime>("UpdateAt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CityId");
-
-                    b.ToTable("StopoverPoints");
                 });
 
             modelBuilder.Entity("VouDeVan.Core.Business.Domains.TransportationCompanies.TransportationCompany", b =>
@@ -148,14 +117,6 @@ namespace VouDeVan.Core.Business.Migrations
                     b.HasOne("VouDeVan.Core.Business.Domains.Geo.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("VouDeVan.Core.Business.Domains.StopoverPoints.StopoverPoint", b =>
-                {
-                    b.HasOne("VouDeVan.Core.Business.Domains.Geo.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

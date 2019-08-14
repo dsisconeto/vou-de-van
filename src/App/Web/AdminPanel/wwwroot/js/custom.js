@@ -1,5 +1,14 @@
 $(function() {
     "use strict";
+
+    [].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
+            new MvcGrid(element);
+    });
+
+    $(".content-refresh").on( "click", function() {
+        new MvcGrid(document.querySelector('.mvc-grid')).reload();
+    });
+
     $(function() {
         $(".preloader").fadeOut();
     });
@@ -148,18 +157,11 @@ $(function() {
         $(this).closest('.card').removeClass().slideUp('fast');
     });
 
-});
+    
+    $("form").submit(function() {
+      $(".cnpj").unmask();
+      $(".phone").unmask();
+      $(".cep").unmask();
+    });
 
-[].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
-            new MvcGrid(element);
-});
-
-$(".content-refresh").on( "click", function() {
-    new MvcGrid(document.querySelector('.mvc-grid')).reload();
-});
-
-$("form").submit(function() {
-  $(".cnpj").unmask();
-  $(".phone").unmask();
-  $(".cep").unmask();
 });

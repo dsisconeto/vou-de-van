@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using VouDeVan.Core.Support;
 using VouDeVan.Core.Support.TransportationCompanies;
 
-
 namespace VouDeVan.App.Mobile.Driver.GatewayApi.TransportationCompanies
 {
     public class TransportationCompanyApiGateway : ApiGateway

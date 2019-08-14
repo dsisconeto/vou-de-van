@@ -24,28 +24,28 @@ namespace VouDeVan.App.Web.Services.TransportationCompanies
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public async Task<Paginate<TransportationCompaniesGetQueryViewModel>> Get(
-            [FromQuery] TransportationCompanyGetQueryWithValidation transportationCompanyGetQueryWithValidation)
+        //[HttpGet]
+        //public async Task<Paginate<TransportationCompaniesGetQueryViewModel>> Get(
+        //    [FromQuery] TransportationCompanyGetQueryWithValidation transportationCompanyGetQueryWithValidation)
 
-        {
-            var transportationCompaniesGetQuery =
-                _mapper.Map<TransportationCompanyGetQueryWithValidation, TransportationCompaniesGetQuery>(
-                    transportationCompanyGetQueryWithValidation);
+        //{
+        //    var transportationCompaniesGetQuery =
+        //        _mapper.Map<TransportationCompanyGetQueryWithValidation, TransportationCompaniesGetQuery>(
+        //            transportationCompanyGetQueryWithValidation);
 
-            var transportationCompaniesPaginate =
-                await _transportationCompanyServices.FindByGetQuery(transportationCompaniesGetQuery);
+        //    var transportationCompaniesPaginate =
+        //        await _transportationCompanyServices.FindByGetQuery(transportationCompaniesGetQuery);
 
-            var items = _mapper.Map<List<TransportationCompany>, List<TransportationCompaniesGetQueryViewModel>>(
-                transportationCompaniesPaginate.Items);
+        //    var items = _mapper.Map<List<TransportationCompany>, List<TransportationCompaniesGetQueryViewModel>>(
+        //        transportationCompaniesPaginate.Items);
 
-            return new Paginate<TransportationCompaniesGetQueryViewModel>
-            {
-                PerPage = transportationCompaniesPaginate.PerPage,
-                Items = items,
-                Page = transportationCompaniesPaginate.Page,
-                Total = transportationCompaniesPaginate.Total,
-            };
-        }
+        //    return new Paginate<TransportationCompaniesGetQueryViewModel>
+        //    {
+        //        PerPage = transportationCompaniesPaginate.PerPage,
+        //        Items = items,
+        //        Page = transportationCompaniesPaginate.Page,
+        //        Total = transportationCompaniesPaginate.Total,
+        //    };
+        //}
     }
 }
