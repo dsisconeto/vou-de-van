@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using VouDeVan.Core.Business.Support;
 
@@ -10,8 +11,10 @@ namespace VouDeVan.Core.Business.Domains.Geo
     {
         [Required, MaxLength(50)]
         public string Name { get; set; }
+
         [Required]
         public Guid StateId { get; set; }
-        public State State { get; set; }
+
+        public virtual State State { get; set; }
     }
 }

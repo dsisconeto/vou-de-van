@@ -157,11 +157,6 @@ $(function() {
         $(this).closest('.card').removeClass().slideUp('fast');
     });
 
-    
-    $("form").submit(function() {
-      $(".cnpj").unmask();
-      $(".phone").unmask();
-      $(".cep").unmask();
-    });
+
 
 });

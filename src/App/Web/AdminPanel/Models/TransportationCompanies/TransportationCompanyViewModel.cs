@@ -14,7 +14,7 @@ namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies
     {
         public Guid? Id { get; set; }
 
-        [Required, MaxLength(14)] public string CNPJ { get; set; }
+        [Required, MaxLength(18)] public string CNPJ { get; set; }
 
         [Required, MaxLength(50), Display(Name = "Nome Fantasia")]
         public string FantasyName { get; set; }
@@ -28,7 +28,7 @@ namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies
         [Required, MaxLength(100), Display(Name = "Nome do Representante")]
         public string RepresentativeName { get; set; }
 
-        [Required, MaxLength(11), Display(Name = "Telefone do Representante")]
+        [Required, MaxLength(15), Display(Name = "Telefone do Representante")]
         public string RepresentativePhone { get; set; }
 
         [MaxLength(1000), Display(Name = "Observação")]

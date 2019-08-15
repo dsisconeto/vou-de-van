@@ -2,7 +2,7 @@
 @using VouDeVan.Core.Business.Domains.StopoverPoints
 @using VouDeVan.Core.Business.Support
 
-@model GridResult<StopoverPoint>
+@model VouDeVan.Core.Support.Paginate<StopoverPoint>
 
 @{
 
@@ -50,7 +50,7 @@
       .Empty("Nenhum ponto de parada encontrado.")
       .Pageable(pager =>
       {
-          pager.RowsPerPage = Model.RowsRowsPerPage;
+          pager.RowsPerPage = Model.PerPage;
           pager.TotalRows = Model.Total;
       })
       .Sortable()

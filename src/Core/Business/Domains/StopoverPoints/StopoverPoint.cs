@@ -23,12 +23,9 @@ namespace VouDeVan.Core.Business.Domains.StopoverPoints
         [Required]
         public Guid CityId { get; set; }
 
-        public City City { get; set; }
-
+        public virtual City City { get; set; }
 
         [Required]
-        [MaxLength(40)]
         public Status Status { get; set; }
-
     }
 }

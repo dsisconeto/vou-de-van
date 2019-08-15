@@ -10,20 +10,18 @@ namespace VouDeVan.App.Web.AdminPainel.Models.StopoverPoints
 {
     public class StopoverPointsViewModel
     {
-        public Guid? Id { get; set; }
+        public string Id { get; set; }
 
         [Required] [MaxLength(255)] public string Name { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal(10,8)")]
         public decimal Latitude { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal(11,8)")]
         public decimal Longitude { get; set; }
 
         [Required]
-        public Guid CityId { get; set; }
+        public string CityId { get; set; }
 
 
         [Required]

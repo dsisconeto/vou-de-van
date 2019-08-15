@@ -17,16 +17,12 @@ namespace VouDeVan.Core.Business.Domains.Geo
 
         public List<City> FindAll(string term = "")
         {
-            var query = _dataBaseContext.Cities
+            return _dataBaseContext.Cities
                 .Include(c => c.State)
-                .Where(c => c.Name.Contains(term) || c.State.Initials.Contains(term));
-
-            var cities = query
+                .Where(c => c.Name.Contains(term) || c.State.Initials.Contains(term))
                 .OrderByDescending(tc => tc.CreatedAt)
+                .Take(10)
                 .ToList();
-
-            return cities;
         }
-
     }
 }

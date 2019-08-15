@@ -107,14 +107,6 @@ namespace VouDeVan.App.Web.AdminPainel
                 app.UseHsts();
             }
 
-            var supportedCultures = new[] { new CultureInfo("pt-BR") };
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(culture: "pt-BR", uiCulture: "pt-BR"),
-                SupportedCultures = supportedCultures,
-                SupportedUICultures = supportedCultures
-            });
-
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
