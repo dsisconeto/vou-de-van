@@ -37,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driver.iOS", "src\App\Mobil
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Driver", "src\App\Mobile\Driver\Driver.csproj", "{077EAA1A-607B-4570-9116-EBA9DA79449C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Driver.GatewayApi", "src\App\Mobile\Driver\GatewayApi\VouDeVan.App.Mobile.Driver.GatewayApi\Driver.GatewayApi.csproj", "{072031ED-49EC-45C2-AE44-40F28929D190}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Driver.GatewayApi", "src\App\Mobile\Driver.GatewayApi\Driver.GatewayApi.csproj", "{072031ED-49EC-45C2-AE44-40F28929D190}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "src\Core\Support\Support.csproj", "{14A584B8-4168-4148-AAAA-63BF56BB2060}"
 EndProject
