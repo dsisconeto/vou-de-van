@@ -4,8 +4,8 @@
     ViewData["Title"] = "Cadastrar Ponto de Parada";
 }
 
-<link rel="stylesheet" href="~/libs/select2/dist/css/select2.min.css" />
-<link rel="stylesheet" href="~/css/gmaps.css" />
+<link rel="stylesheet" href="~/libs/select2/dist/css/select2.min.css"/>
+<link rel="stylesheet" href="~/css/gmaps.css"/>
 
 <div class="container-fluid">
     <div class="row page-titles">
@@ -14,8 +14,12 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Dashboard</a></li>
-                <li class="breadcrumb-item"><a asp-action="Index">Pontos de Parada</a></li>
+                <li class="breadcrumb-item">
+                    <a asp-action="Index" asp-controller="Home">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-action="Index">Pontos de Parada</a>
+                </li>
                 <li class="breadcrumb-item active">Cadastrar</li>
             </ol>
         </div>
@@ -24,8 +28,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form asp-action="Create" method="post" asp-antiforgery="true">
-                        <partial name="Fields" model="@Model" />
+                    <form asp-action="Create" method="post" asp-antiforgery="true" id="form-create">
+                        <partial name="Fields" model="@Model"/>
                         <div class="form-row">
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -49,7 +53,7 @@
 
     <script>
 
-        $(function () {
+        $(function() {
 
             $('#CityId').select2({
                 placeholder: "Buscar por cidade ou estado",
@@ -59,7 +63,7 @@
                     dataType: 'json',
                     type: "GET",
                     quietMillis: 100,
-                    data: function (term, page) {
+                    data: function(term, page) {
                         console.log(term.term);
                         return {
                             q: term.term, //search term
@@ -67,25 +71,26 @@
                             page: page
                         };
                     },
-                    processResults: function (data) {
+                    processResults: function(data) {
                         var myResults = [];
-                        $.each(data, function (index, item) {
-                            myResults.push({
-                                'id': item.value,
-                                'text': item.text
+                        $.each(data,
+                            function(index, item) {
+                                myResults.push({
+                                    'id': item.value,
+                                    'text': item.text
+                                });
                             });
-                        });
                         return {
                             results: myResults
                         };
                     }
                 },
-                escapeMarkup: function (m) { return m; }
+                escapeMarkup: function(m) { return m; }
             });
 
         });
 
-        
+
     </script>
 
 }

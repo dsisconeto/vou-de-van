@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using AutoMapper;
@@ -50,11 +51,9 @@ namespace VouDeVan.App.Web.AdminPainel
                 PositionClass = ToastPositions.TopRight
             });
 
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            services.AddMvc()
-                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                .AddDataAnnotationsLocalization();
+
+            services.AddMvc();
 
             services.AddMvcGrid(filters =>
             {
@@ -76,6 +75,22 @@ namespace VouDeVan.App.Web.AdminPainel
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // O middleware de localização precisa ser configurado antes de qualquer middleware 
+            var supportedCultures = new[]
+            {
+                new CultureInfo("en-US")
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                // Formatting numbers, dates, etc.
+                SupportedCultures = supportedCultures,
+                // UI strings that we have localized.
+                SupportedUICultures = supportedCultures
+            });
+
+
             if (env.IsDevelopment())
             {
                 //app.UseDeveloperExceptionPage();

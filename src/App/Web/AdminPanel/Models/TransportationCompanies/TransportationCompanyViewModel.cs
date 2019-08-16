@@ -14,7 +14,8 @@ namespace VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies
     {
         public Guid? Id { get; set; }
 
-        [Required, MaxLength(18)] public string CNPJ { get; set; }
+        [Required(ErrorMessage = "Required"), MaxLength(18)]
+        public string CNPJ { get; set; }
 
         [Required, MaxLength(50), Display(Name = "Nome Fantasia")]
         public string FantasyName { get; set; }
