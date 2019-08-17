@@ -15,7 +15,6 @@ namespace AdminPanel.Controllers
 {
     public class StopoverPointsController : BaseController
     {
-        private readonly IToastNotification _toastNotification;
 
         private readonly StopoverPointServices _stopoverPointsServices;
         private readonly CityServices _cityServices;
@@ -23,12 +22,11 @@ namespace AdminPanel.Controllers
 
         public StopoverPointsController(StopoverPointServices stopoverPointServices,
             CityServices cityServices,
-            IMapper mapper, IToastNotification toastNotification)
+            IMapper mapper, IToastNotification toastNotification) :base(toastNotification)
         {
             _stopoverPointsServices = stopoverPointServices;
             _cityServices = cityServices;
             _mapper = mapper;
-            _toastNotification = toastNotification;
         }
         public IActionResult Index()
         {

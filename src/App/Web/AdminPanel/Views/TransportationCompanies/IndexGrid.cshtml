@@ -19,13 +19,19 @@
                 </button>
             </form>
         </div>;
+
+
+    Func<Logo, IHtmlContent> displayLogo =
+        @<img src="@item.Uri" alt="Logo Da empresas" class="img-fluid"/>;
 }
 
 @(Html.Grid(Model.Items)
       .Build(columns =>
       {
-          columns.Add(transportationCompany => transportationCompany.Logo.FileName)
-              .Titled("Logo");
+          columns.Add(transportationCompany => transportationCompany.Logo)
+              .Titled("Logo")
+              .RenderedAs(company => displayLogo(company.Logo));
+
 
           columns.Add(transportationCompany => transportationCompany.FantasyName)
               .Titled("Nome Fantasia");

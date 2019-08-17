@@ -8,11 +8,10 @@ namespace VouDeVan.App.Web.AdminPainel.Controllers
 {
     public class HomeController : BaseController
     {
-        private readonly IToastNotification _toastNotification;
 
-        public HomeController(IToastNotification toastNotification)
+        public HomeController(IToastNotification toastNotification) :base(toastNotification)
         {
-            _toastNotification = toastNotification;
+
         }
 
         public IActionResult Index()

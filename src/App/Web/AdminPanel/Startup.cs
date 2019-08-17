@@ -18,7 +18,11 @@ using NToastNotify;
 using Microsoft.AspNetCore.Mvc.Razor;
 using System.Dynamic;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
 using Newtonsoft.Json;
+using VouDeVan.Core.Business.Support;
 
 namespace VouDeVan.App.Web.AdminPainel
 {
@@ -30,30 +34,26 @@ namespace VouDeVan.App.Web.AdminPainel
         }
 
         public IConfiguration Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton((s) => Configuration);
+
             services.AddDatabase(Configuration.GetConnectionString("DefaultConnection"));
 
-            services.AddTransient<IStorage>(provider =>
-            {
-                var rootPath = provider.GetService<IHostingEnvironment>().WebRootPath;
 
-                rootPath = Path.Combine(rootPath, "storage");
-
-                return new StorageFile(rootPath);
-            });
-
-            services.AddTransient(typeof(IToastNotification), typeof(ToastrNotification));
-
-            services.AddMvc().AddNToastNotifyToastr(new ToastrOptions(){
-                ProgressBar = false,
-                PositionClass = ToastPositions.TopRight
-            });
-
+            services.AddStorage();
 
 
             services.AddMvc();
+
+
+            services.AddMvc().AddNToastNotifyToastr(new ToastrOptions()
+            {
+                ProgressBar = true,
+                PositionClass = ToastPositions.TopRight
+            });
+
 
             services.AddMvcGrid(filters =>
             {
@@ -93,36 +93,14 @@ namespace VouDeVan.App.Web.AdminPainel
 
             if (env.IsDevelopment())
             {
-                //app.UseDeveloperExceptionPage();
-
-                app.UseExceptionHandler((error) =>
-                {
-                    error.Run(async context => {
- 
-                        context.Response.StatusCode = context.Response.StatusCode;
-                        context.Response.ContentType = "application/json";
- 
-                        string errorMessage = context.Features.Get<IExceptionHandlerPathFeature>().Error.GetBaseException().Message;
-
-                        dynamic errorComponent = new ExpandoObject();
-                        errorComponent.ErrorCode = context.Response.StatusCode;
-                        errorComponent.ErrorMessage = errorMessage;
-                        
-                        string responseMessage = JsonConvert.SerializeObject(errorMessage);
-                       
-                        //toastNotification.AddErrorToastMessage(responseMessage, new ToastrOptions() { Title = "Erro" });
-
-                        await context.Response.WriteAsync(responseMessage);
-                    });
-                });
+                app.UseDeveloperExceptionPage();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
             }
-
-
+            app.UseDeveloperExceptionPage();
+            app.UseHsts();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

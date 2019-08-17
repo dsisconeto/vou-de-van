@@ -9,26 +9,24 @@ using VouDeVan.App.Web.AdminPainel.Controllers;
 using VouDeVan.App.Web.AdminPainel.Models.TransportationCompanies;
 using VouDeVan.App.Web.AdminPainel.Support.Storage;
 using VouDeVan.Core.Business.Domains.TransportationCompanies;
+using VouDeVan.Core.Business.Support;
 
 namespace AdminPainel.Controllers
 {
     public class TransportationCompaniesController : BaseController
     {
-        private readonly IToastNotification _toastNotification;
-
         private readonly TransportationCompanyServices _transportationCompanyServices;
         private readonly IMapper _mapper;
         private readonly IStorage _storage;
 
         public TransportationCompaniesController(TransportationCompanyServices transportationCompanyServices,
-            IMapper mapper, IStorage storage, IToastNotification toastNotification)
+            IMapper mapper, IStorage storage, IToastNotification toastNotification) : base(toastNotification)
         {
             _transportationCompanyServices = transportationCompanyServices;
             _mapper = mapper;
             _storage = storage;
-            _toastNotification = toastNotification;
         }
-        
+
         public IActionResult Index()
         {
             return View();
@@ -47,8 +45,7 @@ namespace AdminPainel.Controllers
             return View(new TransportationCompanyViewModel());
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
             [FromForm] TransportationCompanyViewModel transportationCompanyViewModel)
         {
@@ -57,7 +54,7 @@ namespace AdminPainel.Controllers
                 return View(transportationCompanyViewModel);
             }
 
-             // TODO gamiarra aqui
+            // TODO gamiarra aqui
             if (transportationCompanyViewModel.LogoSizeIsValid == false)
             {
                 return View(transportationCompanyViewModel);
@@ -68,11 +65,20 @@ namespace AdminPainel.Controllers
             var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
             transportationCompany.Logo = await _storage.Store<Logo>(transportationCompanyViewModel.Logo);
 
-            await _transportationCompanyServices.Create(transportationCompany);
 
-            _toastNotification.AddSuccessToastMessage("Companhia de Transporte cadastrada.");
+            return await Business(async () =>
+                {
+                    await _transportationCompanyServices.Create(transportationCompany);
 
-            return RedirectToAction("Index");
+                    return "Empresa de Transporte cadastrada.";
+                },
+                () => RedirectToAction("Index"),
+                () => View(transportationCompanyViewModel));
+
+            
+
+
+
         }
 
         [HttpGet]

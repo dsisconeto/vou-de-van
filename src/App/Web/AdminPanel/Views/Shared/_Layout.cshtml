@@ -32,7 +32,7 @@
         </div>
     </div>
     <div id="main-wrapper">
-        @await Component.InvokeAsync("NToastNotify")
+        
         <partial name="Navigation/_TopNavbar" />
         <partial name="Navigation/_LateralMenu" />
 
@@ -59,6 +59,6 @@
     @RenderSection("Scripts", required: false)
 
     <partial name="_ValidationScriptsPartial" />
-
+    @await Component.InvokeAsync("NToastNotify")
 </body>
 </html>

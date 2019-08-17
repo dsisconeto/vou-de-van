@@ -9,39 +9,29 @@ namespace VouDeVan.App.Web.AdminPainel.Support.Storage
 {
     public abstract class Storage : IStorage
     {
-        protected readonly string _folder;
+        
+        protected abstract Task<string> CopyFileTo(string directory, string fileName, IFormFile file);
 
-        protected Storage(string folder)
-        {
-            _folder = folder;
-        }
-
-        protected abstract Task CopyFileTo(string path, IFormFile file);
-
-        protected abstract void MakeDirectory(string path);
 
         public async Task<T> Store<T>(IFormFile file) where T : StoreableFile, new()
         {
             var storableFile = new T();
-            var path = MakePath(storableFile.Path);
-            MakeDirectory(path);
-            var randomName = MakeRandomName(file);
-            path = Path.Combine(path, randomName);
 
-            await CopyFileTo(path, file);
+            var path = storableFile.Path;
+
+            var randomName = MakeRandomName(file);
+
+            storableFile.Uri = await CopyFileTo(path, randomName,  file);
 
             storableFile.FileName = randomName;
             storableFile.ContentType = file.ContentType;
             storableFile.Extension = MakeExtension(file);
+       
 
             return storableFile;
         }
 
-        private string MakePath(string path)
-        {
-            return Path.Combine(_folder, path);
-        }
-
+  
         public string MakeRandomName(IFormFile file)
         {
             var extension = MakeExtension(file);
