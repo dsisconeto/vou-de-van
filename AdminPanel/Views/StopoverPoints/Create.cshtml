@@ -1,0 +1,96 @@
+﻿@model AdminPanel.StopoverPoints.StopoverPointsViewModel
+
+@{
+    ViewData["Title"] = "Cadastrar Ponto de Parada";
+}
+
+<link rel="stylesheet" href="~/libs/select2/dist/css/select2.min.css"/>
+<link rel="stylesheet" href="~/css/gmaps.css"/>
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Cadastrar</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-action="Index" asp-controller="Home">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-action="Index">Pontos de Parada</a>
+                </li>
+                <li class="breadcrumb-item active">Cadastrar</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="Create" method="post" asp-antiforgery="true" id="form-create">
+                        <partial name="Fields" model="@Model"/>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <a asp-action="Index" class="btn-shadow btn btn-dark">Voltar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyDGFTLrHgL81aDV3FG5QlFQwMbtnWGgISk"></script>
+    <script src="~/js/gmaps.js"></script>
+    <script src="~/js/custom-map.js"></script>
+    <script src="~/libs/select2/dist/js/select2.min.js"></script>
+    <script src="~/libs/select2/dist/js/i18n/pt-BR.js"></script>
+
+    <script>
+
+        $(function() {
+
+            $('#CityId').select2({
+                placeholder: "Buscar por cidade ou estado",
+                minimumInputLength: 2,
+                ajax: {
+                    url: '@Url.Action("GetCitiesSelect2", "StopoverPoints")',
+                    dataType: 'json',
+                    type: "GET",
+                    quietMillis: 100,
+                    data: function(term, page) {
+                        console.log(term.term);
+                        return {
+                            q: term.term, //search term
+                            page_limit: 10, // page size
+                            page: page
+                        };
+                    },
+                    processResults: function(data) {
+                        var myResults = [];
+                        $.each(data,
+                            function(index, item) {
+                                myResults.push({
+                                    'id': item.value,
+                                    'text': item.text
+                                });
+                            });
+                        return {
+                            results: myResults
+                        };
+                    }
+                },
+                escapeMarkup: function(m) { return m; }
+            });
+
+        });
+
+
+    </script>
+
+}

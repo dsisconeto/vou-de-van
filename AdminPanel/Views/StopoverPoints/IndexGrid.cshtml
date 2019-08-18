@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Html
+@using VouDeVan.Core.Business.Support
+
+@model Business.Support.Paginate<Business.StopoverPoints.StopoverPoint>
+
+@{
+
+    Func<Guid, IHtmlContent> displayActions =
+        @<div>
+
+            <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item">
+                <i class="fas fa-edit"></i>
+            </a>
+
+            <form class="btn-form" asp-action="Delete" asp-route-id="@item" asp-antiforgery="true">
+                <button type="submit" class="btn btn-danger btn-sm">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </form>
+        </div>;
+}
+
+@(Html.Grid(Model.Items)
+      .Build(columns =>
+      {
+          columns.Add(StopoverPoint => StopoverPoint.Name)
+              .Titled("Nome");
+
+          columns.Add(StopoverPoint => StopoverPoint.City.Name)
+              .Titled("Cidade");
+
+
+          columns.Add(StopoverPoint => StopoverPoint.Latitude)
+              .Titled("Latitude");
+
+
+          columns.Add(StopoverPoint => StopoverPoint.Longitude)
+              .Titled("Longitude");
+
+
+          columns.Add(StopoverPoint => StopoverPoint.Status)
+              .Titled("Status");
+
+
+          columns.Add(StopoverPoint => StopoverPoint.Id)
+              .Titled("Ações")
+              .RenderedAs(stopover => displayActions(stopover.Id));
+      })
+      .Empty("Nenhum ponto de parada encontrado.")
+      .Pageable(pager =>
+      {
+          pager.RowsPerPage = Model.PerPage;
+          pager.TotalRows = Model.Total;
+      })
+      .Sortable()
+)
