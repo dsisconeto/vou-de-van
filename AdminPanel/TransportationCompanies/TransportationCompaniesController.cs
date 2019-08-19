@@ -73,8 +73,8 @@ namespace AdminPanel.TransportationCompanies
                 () => View(transportationCompanyViewCreate));
         }
 
-        [HttpGet("editar")]
-        public async Task<IActionResult> Edit(string id)
+        [HttpGet("editar/{id}")]
+        public async Task<IActionResult> Edit([FromRoute] string id)
         {
             if (ValidateGuid(id) == false)
             {
@@ -90,10 +90,10 @@ namespace AdminPanel.TransportationCompanies
             return View(transportationCompaniesEditViewModel);
         }
 
-        [HttpPost("editar")]
+        [HttpPost("editar/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id,
-            [FromForm] TransportationCompanyViewCreate transportationCompanyViewCreate)
+        public async Task<IActionResult> Edit([FromRoute] string id,
+            [FromForm] TransportationCompaniesEditViewModel transportationCompaniesEditViewModel)
         {
             if (ValidateGuid(id) == false)
             {
@@ -102,10 +102,13 @@ namespace AdminPanel.TransportationCompanies
 
             if (ModelState.IsValid == false)
             {
-                return View(transportationCompanyViewCreate);
+                return View(transportationCompaniesEditViewModel);
             }
 
-            var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewCreate);
+
+            transportationCompaniesEditViewModel.Id = id;
+
+            var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompaniesEditViewModel);
 
 
             return await ToastMessage(async () =>
@@ -115,12 +118,12 @@ namespace AdminPanel.TransportationCompanies
                     return "Empresa de transporte editada com sucesso.";
                 },
                 () => RedirectToAction("Index"),
-                () => View(transportationCompanyViewCreate));
+                () => View(transportationCompaniesEditViewModel));
         }
 
-        [HttpPost("deletar")]
+        [HttpPost("deletar/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete([FromRoute] string id)
         {
             if (ValidateGuid(id) == false)
             {

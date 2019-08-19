@@ -88,7 +88,7 @@ namespace Business.TransportationCompanies
 
             if (id != null)
             {
-                query = query.Where(tc => tc.Id != id);
+                query = query.Where(tc => tc.Id != id.Value);
             }
 
             return query.Any();

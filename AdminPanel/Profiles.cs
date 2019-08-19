@@ -47,6 +47,18 @@ namespace VouDeVan.App.Web.AdminPainel
                     dest => dest.RepresentativePhone,
                     source => source.MapFrom(tc => new Phone(tc.RepresentativePhone).ToString())
                 );
+
+
+            CreateMap<TransportationCompaniesEditViewModel, TransportationCompany>()
+                .ForMember(dest => dest.Logo, opt => opt.Ignore())
+                .ForMember(
+                    dest => dest.CNPJ,
+                    source => source.MapFrom(tc => new Cnpj(tc.CNPJ).ToString())
+                )
+                .ForMember(
+                    dest => dest.RepresentativePhone,
+                    source => source.MapFrom(tc => new Phone(tc.RepresentativePhone).ToString())
+                );
         }
     }
 }
