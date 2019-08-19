@@ -5,17 +5,17 @@ using Microsoft.AspNetCore.Http;
 
 namespace Storage
 {
-    public abstract class Storage : IStorage
+    public abstract class Storage
     {
         
         protected abstract Task<string> CopyFileTo(string directory, string fileName, IFormFile file);
 
 
-        public async Task<T> Store<T>(IFormFile file) where T : File, new()
+        public async Task<T> Store<T>(IFormFile file) where T : Storable, new()
         {
             var storableFile = new T();
 
-            var path = storableFile.Path;
+            var path = storableFile.Directory;
 
             var randomName = MakeRandomName(file);
 
@@ -29,7 +29,8 @@ namespace Storage
             return storableFile;
         }
 
-  
+
+
         public string MakeRandomName(IFormFile file)
         {
             var extension = MakeExtension(file);

@@ -15,14 +15,12 @@ namespace AdminPanel.TransportationCompanies
     {
         private readonly TransportationCompanyServices _transportationCompanyServices;
         private readonly IMapper _mapper;
-        private readonly IStorage _storage;
 
         public TransportationCompaniesController(TransportationCompanyServices transportationCompanyServices,
-            IMapper mapper, IStorage storage, IToastNotification toastNotification) : base(toastNotification)
+            IMapper mapper, IToastNotification toastNotification) : base(toastNotification)
         {
             _transportationCompanyServices = transportationCompanyServices;
             _mapper = mapper;
-            _storage = storage;
         }
 
         [HttpGet("")]
@@ -56,16 +54,12 @@ namespace AdminPanel.TransportationCompanies
                 return View(transportationCompanyViewCreate);
             }
 
-
-            // TODO apagar se der erro tem que apagar  a imagem
-
             var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewCreate);
-            transportationCompany.Logo = await _storage.Store<Logo>(transportationCompanyViewCreate.Logo);
-
 
             return await ToastMessage(async () =>
                 {
-                    await _transportationCompanyServices.Create(transportationCompany);
+                    await _transportationCompanyServices.Create(transportationCompany,
+                        transportationCompanyViewCreate.Logo);
 
                     return "Empresa de Transporte cadastrada.";
                 },
@@ -105,15 +99,15 @@ namespace AdminPanel.TransportationCompanies
                 return View(transportationCompaniesEditViewModel);
             }
 
+            var transportationCompany = await _transportationCompanyServices.FindById(Guid.Parse(id));
 
-            transportationCompaniesEditViewModel.Id = id;
 
-            var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompaniesEditViewModel);
-
+            transportationCompany = _mapper.Map(transportationCompaniesEditViewModel, transportationCompany);
 
             return await ToastMessage(async () =>
                 {
-                    await _transportationCompanyServices.Update(transportationCompany);
+                    await _transportationCompanyServices.Update(transportationCompany,
+                        transportationCompaniesEditViewModel.Logo);
 
                     return "Empresa de transporte editada com sucesso.";
                 },

@@ -3,7 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Business.Support;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Storage;
 using VouDeVan.Core.Business.Support;
 
 namespace Business.TransportationCompanies
@@ -12,14 +14,17 @@ namespace Business.TransportationCompanies
     {
         private readonly DataBaseContext _dataBaseContext;
         private readonly IMapper _mapper;
+        private readonly IStorage _storage;
 
-        public TransportationCompanyServices(DataBaseContext dataBaseContext, IMapper mapper)
+        public TransportationCompanyServices(DataBaseContext dataBaseContext, IMapper mapper, IStorage storage)
         {
             _dataBaseContext = dataBaseContext;
             _mapper = mapper;
+            _storage = storage;
         }
 
-        public async Task<TransportationCompany> Create(TransportationCompany transportationCompany)
+        public async Task<TransportationCompany> Create(TransportationCompany transportationCompany,
+            IFormFile logoFormFile)
         {
             if (HasCompanySameCpnj(transportationCompany.CNPJ))
             {
@@ -28,6 +33,7 @@ namespace Business.TransportationCompanies
 
             transportationCompany.Id = Guid.NewGuid();
             transportationCompany.Status = Status.Active;
+            transportationCompany.Logo = await _storage.Store<Logo>(logoFormFile);
 
             _dataBaseContext.TransportationCompanies.Add(transportationCompany);
 
@@ -36,16 +42,31 @@ namespace Business.TransportationCompanies
             return transportationCompany;
         }
 
-        public async Task<TransportationCompany> Update(TransportationCompany transportationCompany)
+        public async Task<TransportationCompany> Update(TransportationCompany transportationCompany,
+            IFormFile logoFormFile = null)
         {
             if (HasCompanySameCpnj(transportationCompany.CNPJ, transportationCompany.Id))
             {
                 throw new BusinessException("Não pode existir duas empresas com o mesmo CNPJ.");
             }
 
+
+            var oldLogo = transportationCompany.Logo;
+
+            if (logoFormFile != null)
+            {
+                transportationCompany.Logo = await _storage.Store<Logo>(logoFormFile);
+            }
+
             _dataBaseContext.TransportationCompanies.Update(transportationCompany);
 
             await _dataBaseContext.SaveChangesAsync();
+
+            if (logoFormFile != null)
+            {
+                await _storage.Destroy(oldLogo);
+            }
+
 
             return transportationCompany;
         }
@@ -63,9 +84,16 @@ namespace Business.TransportationCompanies
                 throw new BusinessException("Empresa de transporte não encontrada");
             }
 
+            var logo = transportationCompany.Logo;
+
             _dataBaseContext.TransportationCompanies.Remove(transportationCompany);
 
             await _dataBaseContext.SaveChangesAsync();
+
+
+
+            await _storage.Destroy(logo);
+
         }
 
         public async Task<TransportationCompany> FindById(Guid id)

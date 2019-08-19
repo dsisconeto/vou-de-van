@@ -47,5 +47,14 @@ namespace Storage
 
             return cloudBlobContainer;
         }
+
+        public async Task Destroy(Storable storable)
+        {
+            var container = await MakeContainer(storable.Directory);
+
+            var cloudBlockBlob = container.GetBlockBlobReference(storable.FileName);
+
+            await cloudBlockBlob.DeleteIfExistsAsync();
+        }
     }
 }

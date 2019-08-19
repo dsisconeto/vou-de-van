@@ -31,4 +31,9 @@
     <None Include="wwwroot\libs\jquery-wizard-master\.github\PULL_REQUEST_TEMPLATE.md" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="wwwroot\storage\transportation-companies\" />
+  </ItemGroup>
+
 </Project>

@@ -3,8 +3,8 @@
 
 namespace Business.TransportationCompanies
 {
-    public class Logo : File
+    public class Logo : Storable
     {
-        public override string Path => "transportation-companies";
+        public override string Directory => "transportation-companies";
     }
 }

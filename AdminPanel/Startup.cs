@@ -1,23 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 using AdminPanel.Common;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NonFactors.Mvc.Grid;
 using NToastNotify;
 using Web.Support.Providers;
-using AutoMapper;
-using Microsoft.AspNetCore.Localization;
-using AdminPanel.Common;
-using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace AdminPanel
 {
@@ -33,7 +27,7 @@ namespace AdminPanel
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton((s) => Configuration);
+            services.AddSingleton(s => Configuration);
 
             services.AddDatabase(Configuration.GetConnectionString("DefaultConnection"));
 
@@ -53,7 +47,7 @@ namespace AdminPanel
             services.AddLocalization(options => options.ResourcesPath = "Common/Resources");
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddNToastNotifyToastr(new ToastrOptions()
+                .AddNToastNotifyToastr(new ToastrOptions
                 {
                     ProgressBar = true,
                     PositionClass = ToastPositions.TopRight
@@ -112,8 +106,8 @@ namespace AdminPanel
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    "default",
+                    "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

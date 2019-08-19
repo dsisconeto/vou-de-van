@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Storage
 {
-    public class StorageFile : Storage
+    public class StorageFile : Storage, IStorage
     {
         private readonly string _folder;
         private readonly string _pathRoot;
@@ -20,10 +20,7 @@ namespace Storage
 
         protected override async Task<string> CopyFileTo(string directory, string fileName, IFormFile file)
         {
-
-
-            var absolutePathDirectory = Path.Combine(_pathRoot, _folder, directory);
-
+            var absolutePathDirectory = MakeAbsolutePath(directory);
 
             MakeDirectory(absolutePathDirectory);
 
@@ -37,16 +34,32 @@ namespace Storage
             return $"{_url}/{_folder}/{directory}/{fileName}";
         }
 
-
-        protected void MakeDirectory(string path)
+        public async Task Destroy(Storable storable)
         {
+           await Task.Run(() =>
+            {
+                var absolutePath = MakeAbsolutePath(storable.DirectoryWithFileName);
+
+                if (File.Exists(absolutePath))
+                {
+                    File.Delete(absolutePath);
+                }
+            });
+        }
+
+        private static void MakeDirectory(string path)
+        { 
             if (Directory.Exists(path))
             {
-             return;
+                return;
             }
 
             Directory.CreateDirectory(path);
+        }
 
+        private string MakeAbsolutePath(string directory)
+        {
+            return Path.Combine(_pathRoot, _folder, directory);
         }
     }
 }

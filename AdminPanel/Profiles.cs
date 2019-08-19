@@ -28,7 +28,7 @@ namespace VouDeVan.App.Web.AdminPainel
 
 
             CreateMap<TransportationCompany, TransportationCompaniesEditViewModel>()
-                .ForMember(dest => dest.Logo, opt => opt.Ignore());
+                .ForMember(dest => dest.Logo, opt => opt.Ignore());     
 
 
             CreateMap<Paginate<TransportationCompany>, Paginate<TransportationCompanyIndexViewModel>>();
@@ -50,6 +50,7 @@ namespace VouDeVan.App.Web.AdminPainel
 
 
             CreateMap<TransportationCompaniesEditViewModel, TransportationCompany>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Logo, opt => opt.Ignore())
                 .ForMember(
                     dest => dest.CNPJ,
