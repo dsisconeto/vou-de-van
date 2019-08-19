@@ -16,6 +16,8 @@ using NToastNotify;
 using Web.Support.Providers;
 using AutoMapper;
 using Microsoft.AspNetCore.Localization;
+using AdminPanel.Common;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace AdminPanel
 {
@@ -34,6 +36,8 @@ namespace AdminPanel
             services.AddSingleton((s) => Configuration);
 
             services.AddDatabase(Configuration.GetConnectionString("DefaultConnection"));
+
+
             services.AddBusiness();
 
             services.AddStorage();
@@ -46,17 +50,19 @@ namespace AdminPanel
             });
 
 
-            services.AddMvc();
-
+            services.AddLocalization(options => options.ResourcesPath = "Common/Resources");
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddNToastNotifyToastr(new ToastrOptions()
                 {
                     ProgressBar = true,
                     PositionClass = ToastPositions.TopRight
+                })
+                .AddDataAnnotationsLocalization(option =>
+                {
+                    option.DataAnnotationLocalizerProvider =
+                        (type, factory) => factory.Create(typeof(SharedResource));
                 });
-
-
 
             services.AddMvcGrid(filters =>
             {
@@ -71,7 +77,6 @@ namespace AdminPanel
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -103,7 +108,7 @@ namespace AdminPanel
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-   
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPanel", "AdminPanel\AdminPanel.csproj", "{A38C009B-C390-49A5-AE29-BB0276AA3346}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{8E3AC62B-BC6F-4126-A036-0DA166975C17}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Support", "Web.Support\Web.Support.csproj", "{CD1DCEBF-F2A6-49AB-B465-7DB72CF289B2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage", "Storage\Storage.csproj", "{CC89F533-2AB4-4EDA-A76A-B262EA408F53}"
@@ -49,9 +47,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{A38C009B-C390-49A5-AE29-BB0276AA3346} = {8E3AC62B-BC6F-4126-A036-0DA166975C17}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BBC3FB02-7E2E-4D83-94C3-5DD71D40A72B}

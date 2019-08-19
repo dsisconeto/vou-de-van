@@ -21,6 +21,8 @@ namespace Web.Support.Validations
         {
             switch (value)
             {
+                case null:
+                    return ValidationResult.Success;
                 case IFormFile form:
                     return ValidateSingle(form, validationContext);
                 case IEnumerable<IFormFile> forms:
@@ -34,7 +36,7 @@ namespace Web.Support.Validations
         public ValidationResult ValidateSingle(IFormFile form, ValidationContext validationContext)
         {
             var lengthInKb = form.Length / 1024;
-
+            // TODO melhorar a  mensagem de erro
             return lengthInKb < _sizeInKb
                 ? ValidationResult.Success
                 : new ValidationResult($"O tamanho do arquivo do campo {validationContext.DisplayName} é inválido");
@@ -42,6 +44,7 @@ namespace Web.Support.Validations
 
         public ValidationResult ValidateEnumerable(IEnumerable<IFormFile> forms, ValidationContext validationContext)
         {
+            // TODO melhorar a  mensagem de erro
             var hasAnyInvalid = forms.Any(form => (form.Length / 1024) > _sizeInKb);
 
             return hasAnyInvalid

@@ -2,11 +2,11 @@
 @using Microsoft.AspNetCore.Html
 
 
-@model Business.Support.Paginate<Business.TransportationCompanies.TransportationCompany>
+@model Business.Support.Paginate<AdminPanel.TransportationCompanies.TransportationCompanyIndexViewModel>
 
 @{
 
-    Func<Guid, IHtmlContent> displayActions =
+    Func<string, IHtmlContent> displayActions =
         @<div>
 
             <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item">
@@ -21,8 +21,8 @@
         </div>;
 
 
-    Func<Logo, IHtmlContent> displayLogo =
-        @<img src="@item.Uri" alt="Logo Da empresas" class="img-fluid"/>;
+    Func<string, IHtmlContent> displayLogo =
+        @<img src="@item" alt="Logo Da empresas" class="img-fluid"/>;
 }
 
 @(Html.Grid(Model.Items)
@@ -36,23 +36,16 @@
           columns.Add(transportationCompany => transportationCompany.FantasyName)
               .Titled("Nome Fantasia");
 
-          columns.Add(transportationCompany => transportationCompany.SocialName)
-              .Titled("Razão Social");
-
 
           columns.Add(transportationCompany => transportationCompany.CNPJ)
               .Titled("CNPJ");
-
-
-          columns.Add(transportationCompany => transportationCompany.RepresentativeName)
-              .Titled("Representante");
 
 
           columns.Add(transportationCompany => transportationCompany.Id)
               .Titled("Ações")
               .RenderedAs(company => displayActions(company.Id));
       })
-      .Empty("Nenhuma companhia encontrada.")
+      .Empty("Nenhuma empresa encontrada.")
       .Pageable(pager =>
       {
           pager.RowsPerPage = Model.PerPage;

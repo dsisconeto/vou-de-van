@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace Business.Support
 {
-    public class Paginate<T>
+    public class Paginate<T> : IEnumerable<T>
     {
         public int Page { get; set; }
         public int Total { get; set; }
@@ -32,5 +33,15 @@ namespace Business.Support
         public bool DoesNotHaveNext => HasNext == false;
         public bool DoesNotHavePrevious => HasPrevious == false;
         public int Remaining => DoesNotHaveNext ? 0 : Total - (Skip + PerPage);
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return Items.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Items.GetEnumerator();
+        }
     }
 }

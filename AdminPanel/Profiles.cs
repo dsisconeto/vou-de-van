@@ -20,11 +20,24 @@ namespace VouDeVan.App.Web.AdminPainel
 
         public void MapperTransportationCompany()
         {
-            CreateMap<TransportationCompany, TransportationCompanyViewModel>()
+            CreateMap<TransportationCompany, TransportationCompanyIndexViewModel>()
+                .ForMember(
+                    dest => dest.Logo,
+                    source => source.MapFrom(tc => tc.Logo.Uri)
+                );
+
+
+            CreateMap<TransportationCompany, TransportationCompaniesEditViewModel>()
                 .ForMember(dest => dest.Logo, opt => opt.Ignore());
 
 
-            CreateMap<TransportationCompanyViewModel, TransportationCompany>()
+            CreateMap<Paginate<TransportationCompany>, Paginate<TransportationCompanyIndexViewModel>>();
+
+            CreateMap<TransportationCompany, TransportationCompanyViewCreate>()
+                .ForMember(dest => dest.Logo, opt => opt.Ignore());
+
+
+            CreateMap<TransportationCompanyViewCreate, TransportationCompany>()
                 .ForMember(dest => dest.Logo, opt => opt.Ignore())
                 .ForMember(
                     dest => dest.CNPJ,

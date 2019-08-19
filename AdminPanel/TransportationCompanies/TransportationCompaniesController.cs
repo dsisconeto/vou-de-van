@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AdminPanel.Common;
 using AutoMapper;
+using Business.Support;
 using Business.TransportationCompanies;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
@@ -9,6 +10,7 @@ using Storage;
 
 namespace AdminPanel.TransportationCompanies
 {
+    [Route("empresas")]
     public class TransportationCompaniesController : BaseController
     {
         private readonly TransportationCompanyServices _transportationCompanyServices;
@@ -23,38 +25,42 @@ namespace AdminPanel.TransportationCompanies
             _storage = storage;
         }
 
+        [HttpGet("")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet("index-grid")]
         public async Task<PartialViewResult> IndexGrid([FromQuery] int page = 1)
         {
             var transportationCompanies = await _transportationCompanyServices.FindAllToGrid(page);
+            var transportationCompaniesIndexViewModel =
+                _mapper.Map<Paginate<TransportationCompanyIndexViewModel>>(transportationCompanies);
 
-            return PartialView(transportationCompanies);
+            return PartialView(transportationCompaniesIndexViewModel);
         }
 
-        [HttpGet]
+        [HttpGet("cadastrar")]
         public IActionResult Create()
         {
-            return View(new TransportationCompanyViewModel());
+            return View(new TransportationCompanyViewCreate());
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost("cadastrar"), ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [FromForm] TransportationCompanyViewModel transportationCompanyViewModel)
+            [FromForm] TransportationCompanyViewCreate transportationCompanyViewCreate)
         {
             if (ModelState.IsValid == false)
             {
-                return View(transportationCompanyViewModel);
+                return View(transportationCompanyViewCreate);
             }
 
 
             // TODO apagar se der erro tem que apagar  a imagem
 
-            var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
-            transportationCompany.Logo = await _storage.Store<Logo>(transportationCompanyViewModel.Logo);
+            var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewCreate);
+            transportationCompany.Logo = await _storage.Store<Logo>(transportationCompanyViewCreate.Logo);
 
 
             return await ToastMessage(async () =>
@@ -64,10 +70,10 @@ namespace AdminPanel.TransportationCompanies
                     return "Empresa de Transporte cadastrada.";
                 },
                 () => RedirectToAction("Index"),
-                () => View(transportationCompanyViewModel));
+                () => View(transportationCompanyViewCreate));
         }
 
-        [HttpGet]
+        [HttpGet("editar")]
         public async Task<IActionResult> Edit(string id)
         {
             if (ValidateGuid(id) == false)
@@ -78,15 +84,16 @@ namespace AdminPanel.TransportationCompanies
 
             var transportationCompany = await _transportationCompanyServices.FindById(Guid.Parse(id));
 
-            var transportationCompanyViewModel = _mapper.Map<TransportationCompanyViewModel>(transportationCompany);
+            var transportationCompaniesEditViewModel =
+                _mapper.Map<TransportationCompaniesEditViewModel>(transportationCompany);
 
-            return View(transportationCompanyViewModel);
+            return View(transportationCompaniesEditViewModel);
         }
 
-        [HttpPost]
+        [HttpPost("editar")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id,
-            [FromForm] TransportationCompanyViewModel transportationCompanyViewModel)
+            [FromForm] TransportationCompanyViewCreate transportationCompanyViewCreate)
         {
             if (ValidateGuid(id) == false)
             {
@@ -95,10 +102,10 @@ namespace AdminPanel.TransportationCompanies
 
             if (ModelState.IsValid == false)
             {
-                return View(transportationCompanyViewModel);
+                return View(transportationCompanyViewCreate);
             }
 
-            var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewModel);
+            var transportationCompany = _mapper.Map<TransportationCompany>(transportationCompanyViewCreate);
 
 
             return await ToastMessage(async () =>
@@ -108,10 +115,10 @@ namespace AdminPanel.TransportationCompanies
                     return "Empresa de transporte editada com sucesso.";
                 },
                 () => RedirectToAction("Index"),
-                () => View(transportationCompanyViewModel));
+                () => View(transportationCompanyViewCreate));
         }
 
-        [HttpPost]
+        [HttpPost("deletar")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string id)
         {

@@ -1,38 +1,56 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VouDeVan.Core.Business.Support;
-using Web.Support.Validations;
 
 namespace AdminPanel.TransportationCompanies
 {
-    public class TransportationCompanyViewModel
+    public abstract class TransportationCompanyViewModel
     {
-        public string Id { get; set; }
-
-        [Required(ErrorMessage = "Required"), MaxLength(18), MinLength(18)]
+        [Display(Name = "CNPJ")]
+        [Required(ErrorMessage = "Required")]
+        [MaxLength(18, ErrorMessage = "MaxLength")]
+        [MinLength(18, ErrorMessage = "MinLength")]
         public string CNPJ { get; set; }
 
-        [Required, MaxLength(50), Display(Name = "Nome Fantasia")]
+        [Display(Name = "nome fantasia")]
+        [Required(ErrorMessage = "Required")]
+        [MaxLength(50, ErrorMessage = "MaxLength")]
         public string FantasyName { get; set; }
 
-        [Required, MaxLength(100), Display(Name = "Razão Social")]
+        [Display(Name = "razão social")]
+        [Required(ErrorMessage = "Required")]
+        [MaxLength(100, ErrorMessage = "MaxLength")]
         public string SocialName { get; set; }
 
-        [Required, MaxLength(400), Display(Name = "Endereço")]
+        [Display(Name = "endereço")]
+        [Required(ErrorMessage = "Required")]
+        [MaxLength(400, ErrorMessage = "MaxLength")]
         public string Address { get; set; }
 
-        [Required, MaxLength(100), Display(Name = "Nome do Representante")]
+        [Display(Name = "nome do representante")]
+        [Required(ErrorMessage = "Required")]
+        [MaxLength(100, ErrorMessage = "MaxLength")]
         public string RepresentativeName { get; set; }
 
-        [Required, MinLength(14), MaxLength(15), Display(Name = "Telefone do Representante")]
+        [Display(Name = "telefone do representante")]
+        [Required(ErrorMessage = "Required")]
+        [MinLength(14, ErrorMessage = "MinLength")]
+        [MaxLength(15, ErrorMessage = "MaxLength")]
         public string RepresentativePhone { get; set; }
 
-        [MaxLength(1000), Display(Name = "Observação")]
+        [Display(Name = "observação")]
+        [MaxLength(1000, ErrorMessage = "MaxLength")]
         public string Observation { get; set; }
 
-        [Required] public Status Status { get; set; } = Status.Active;
+        [Required(ErrorMessage = "Required")] public Status Status { get; set; }
+
+
+        public abstract IFormFile Logo { get; set; }
 
         public List<SelectListItem> Statuses { get; } = new List<SelectListItem>
         {
@@ -40,9 +58,5 @@ namespace AdminPanel.TransportationCompanies
             new SelectListItem {Value = ((int) Status.Disabled).ToString(), Text = "Desabilitado"},
             new SelectListItem {Value = ((int) Status.Created).ToString(), Text = "Criado"},
         };
-
-
-        [Required, MaxFileSizeValidation(100), ImageValidation]
-        public IFormFile Logo { get; set; }
     }
 }

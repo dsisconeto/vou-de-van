@@ -1,7 +1,7 @@
-﻿@model AdminPanel.TransportationCompanies.TransportationCompanyViewModel
+﻿@model AdminPanel.TransportationCompanies.TransportationCompaniesEditViewModel
 
 @{
-    ViewData["Title"] = $"Editar Empresa de Transporte - {Model.FantasyName}";
+    ViewData["Title"] = $"Editar Empresas - {Model.FantasyName}";
 }
 
 <div class="container-fluid">
@@ -11,8 +11,9 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Dashboard</a></li>
-                <li class="breadcrumb-item"><a asp-action="Index">Companhias de Transporte</a></li>
+                <li class="breadcrumb-item">
+                    <a asp-action="Index">Empresas</a>
+                </li>
                 <li class="breadcrumb-item active">Editar</li>
             </ol>
         </div>
@@ -22,7 +23,7 @@
             <div class="card">
                 <div class="card-body">
                     <form asp-action="Edit" asp-route-id="@Model.Id" method="post" asp-antiforgery="true" enctype="multipart/form-data">
-                        <partial name="Fields" model="@Model" />
+                        <partial name="Fields" model="@Model"/>
                         <div class="form-row">
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary">Editar</button>

@@ -20,6 +20,8 @@ namespace Web.Support.Validations
         {
             switch (value)
             {
+                case null:
+                    return ValidationResult.Success;
                 case IFormFile form:
                     return ValidationSingle(form, validationContext);
                 case IEnumerable<IFormFile> forms:
@@ -31,6 +33,7 @@ namespace Web.Support.Validations
 
         public ValidationResult ValidationSingle(IFormFile form, ValidationContext validationContext)
         {
+            // TODO melhorar a  mensagem de erro
             var isValid = _typeImageAllow.ContainsKey(form.ContentType);
 
             return isValid
@@ -40,6 +43,7 @@ namespace Web.Support.Validations
 
         public ValidationResult ValidationEnumerable(IEnumerable<IFormFile> forms, ValidationContext validationContext)
         {
+            // TODO melhorar a  mensagem de erro
             var hasAnyInvalid = forms.Any(f => _typeImageAllow.ContainsKey(f.ContentType) == false);
 
             return hasAnyInvalid
